@@ -1,0 +1,9 @@
+{
+    "name": "منصة التحليل",
+    "short_name": "تحليل",
+    "description": "تحليل الذهب والعملات",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0e17",
+    "theme_color": "#f5b041"
+}

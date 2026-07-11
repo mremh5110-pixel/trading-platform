@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0e17">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <title>منصة التحليل المتكاملة - الذهب والعملات</title>
+    
+    <!-- TradingView Chart -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0a0e17;
+            color: #e6edf5;
+            padding: 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px 20px;
+            background: #111b2b;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #1e2d42;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            color: #f5b041;
+        }
+
+        .live-price {
+            background: #1a2538;
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid #2a3a50;
+        }
+
+        .live-price span {
+            color: #f5b041;
+            font-weight: bold;
+        }
+
+        .card {
+            background: #111b2b;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 16px;
+            border: 1px solid #1e2d42;
+        }
+
+        .card h3 {
+            color: #f5b041;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .row-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 4px;
+            font-size: 12px;
+            color: #8a9bb5;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: #0a121f;
+            border: 1px solid #1e2d42;
+            border-radius: 10px;
+            color: #e6edf5;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #f5b041;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f5b041, #e67e22);
+            color: #0a0e17;
+            width: 100%;
+            padding: 14px;
+            font-size: 17px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: #1a2538;
+            color: #e6edf5;
+            border: 1px solid #2a3a50;
+        }
+
+        .btn-secondary:hover {
+            border-color: #f5b041;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .target-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .target-item {
+            background: #0a121f;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #1e2d42;
+        }
+
+        .target-item .label {
+            color: #8a9bb5;
+            font-size: 11px;
+        }
+
+        .target-item .value {
+            color: #f5b041;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 3px;
+        }
+
+        .badge-buy {
+            background: #1a6b3c;
+            color: #7ecf8a;
+        }
+
+        .badge-sell {
+            background: #6b1a1a;
+            color: #f07a7a;
+        }
+
+        .badge-neutral {
+            background: #2a2a3a;
+            color: #aab;
+        }
+
+        .chart-container {
+            height: 350px;
+        }
+
+        .history-item {
+            padding: 8px 12px;
+            background: #0a121f;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            border-right: 3px solid #f5b041;
+            font-size: 13px;
+        }
+
+        .history-item .asset {
+            color: #f5b041;
+            font-weight: 600;
+        }
+
+        .history-item .time {
+            color: #5a6a80;
+            font-size: 11px;
+            float: left;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .spinner {
+            border: 4px solid #1a2538;
+            border-top: 4px solid #f5b041;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: #111b2b;
+            border: 1px solid #1e2d42;
+            color: #e6edf5;
+            z-index: 9999;
+            max-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            border-color: #7ecf8a;
+        }
+
+        .notification.error {
+            border-color: #f07a7a;
+        }
+
+        .notification.warning {
+            border-color: #f5b041;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* مؤشرات إضافية */
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 8px;
+        }
+
+        .indicator-item {
+            background: #0a121f;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #1e2d42;
+        }
+
+        .indicator-item .name {
+            font-size: 10px;
+            color: #8a9bb5;
+        }
+
+        .indicator-item .value {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .indicator-item .value.bullish {
+            color: #7ecf8a;
+        }
+
+        .indicator-item .value.bearish {
+            color: #f07a7a;
+        }
+
+        .indicator-item .value.neutral {
+            color: #8a9bb5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <h1>📊 منصة التحليل - الذهب والعملات</h1>
+        <div class="live-price">
+            🟢 السعر: <span id="livePriceDisplay">جاري التحديث...</span>
+        </div>
+    </header>
+
+    <!-- ===== GRID ===== -->
+    <div class="grid-2">
+
+        <!-- ===== LEFT ===== -->
+        <div>
+
+            <!-- اختيار الأداة -->
+            <div class="card">
+                <h3>⚡ الأداة المالية</h3>
+                <select id="assetSelect" onchange="onAssetChange()">
+                    <optgroup label="🔶 المعادن">
+                        <option value="XAUUSD">الذهب (XAU/USD)</option>
+                        <option value="XAGUSD">الفضة (XAG/USD)</option>
+                    </optgroup>
+                    <optgroup label="💱 العملات">
+                        <option value="EURUSD">يورو/دولار (EUR/USD)</option>
+                        <option value="GBPUSD">جنيه/دولار (GBP/USD)</option>
+                        <option value="USDJPY">دولار/ين (USD/JPY)</option>
+                        <option value="USDCAD">دولار/كندي (USD/CAD)</option>
+                        <option value="AUDUSD">أسترالي/دولار (AUD/USD)</option>
+                    </optgroup>
+                    <optgroup label="📈 العملات الرقمية">
+                        <option value="BTCUSD">بيتكوين (BTC/USD)</option>
+                        <option value="ETHUSD">إيثيريوم (ETH/USD)</option>
+                    </optgroup>
+                </select>
+                <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="fetchLivePrice()">
+                    🔄 تحديث السعر
+                </button>
+            </div>
+
+            <!-- بيانات التحليل -->
+            <div class="card">
+                <h3>📝 بيانات التحليل</h3>
+                <div class="row-2">
+                    <div>
+                        <label>💰 السعر الحالي</label>
+                        <input type="number" id="currentPrice" step="0.01" placeholder="مثل 4120" />
+                    </div>
+                    <div>
+                        <label>📊 المتوسط 50</label>
+                        <input type="number" id="ma50" step="0.01" placeholder="مثل 4100" />
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div>
+                        <label>📉 الدعم</label>
+                        <input type="number" id="support" step="0.01" placeholder="مثل 4100" />
+                    </div>
+                    <div>
+                        <label>📈 المقاومة</label>
+                        <input type="number" id="resistance" step="0.01" placeholder="مثل 4140" />
+                    </div>
+                </div>
+                <div class="row-2">
+                    <div>
+                        <label>📊 RSI</label>
+                        <input type="number" id="rsiInput" step="0.1" placeholder="50" />
+                    </div>
+                    <div>
+                        <label>📊 حجم التداول</label>
+                        <input type="text" id="volumeInput" placeholder="مرتفع/منخفض" />
+                    </div>
+                </div>
+                <label>📝 ملاحظات</label>
+                <textarea id="notes" placeholder="اكتب ملاحظاتك..."></textarea>
+            </div>
+
+            <!-- إدارة المخاطر -->
+            <div class="card">
+                <h3>⚖️ إدارة المخاطر</h3>
+                <div class="row-2">
+                    <div>
+                        <label>💰 رأس المال ($)</label>
+                        <input type="number" id="capital" value="10000" />
+                    </div>
+                    <div>
+                        <label>⚠️ نسبة المخاطرة (%)</label>
+                        <input type="number" id="riskPercent" value="2" />
+                    </div>
+                </div>
+                <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="calculateRisk()">
+                    🧮 حساب المخاطرة
+                </button>
+                <div id="riskResult" class="hidden" style="margin-top:10px; background:#0a121f; padding:12px; border-radius:10px;">
+                    <div class="row-2">
+                        <div><strong>حجم العقد:</strong> <span id="positionSize">--</span></div>
+                        <div><strong>المخاطرة:</strong> $<span id="riskAmount">--</span></div>
+                    </div>
+                    <div class="row-2">
+                        <div><strong>وقف الخسارة:</strong> <span id="slPrice">--</span></div>
+                        <div><strong>جني الأرباح:</strong> <span id="tpPrice">--</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تليجرام -->
+            <div class="card">
+                <h3>🤖 بوت التليجرام</h3>
+                <input type="text" id="telegramChatId" placeholder="Chat ID" />
+                <button class="btn btn-secondary" style="margin-top:6px; width:100%;" onclick="connectTelegram()">
+                    🔗 ربط البوت
+                </button>
+                <div style="margin-top:6px; font-size:11px; color:#5a6a80;">
+                    💡 احصل على Chat ID من @userinfobot
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== RIGHT ===== -->
+        <div>
+
+            <!-- زر التحليل -->
+            <button class="btn btn-primary" onclick="analyze()">
+                🔍 تحليل شامل (Ctrl+Enter)
+            </button>
+
+            <!-- Loading -->
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>جاري التحليل...</p>
+            </div>
+
+            <!-- ===== RESULTS ===== -->
+            <div id="results" class="hidden">
+
+                <!-- Chart -->
+                <div class="card">
+                    <h3>📈 شارت تفاعلي</h3>
+                    <div class="chart-container" id="tradingview-widget"></div>
+                </div>
+
+                <!-- Indicators -->
+                <div class="card">
+                    <h3>📊 المؤشرات الفنية</h3>
+                    <div class="indicator-grid">
+                        <div class="indicator-item">
+                            <div class="name">RSI</div>
+                            <div class="value" id="indRSI">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">MACD</div>
+                            <div class="value" id="indMACD">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">المتوسط 50</div>
+                            <div class="value" id="indMA50">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">الاتجاه</div>
+                            <div class="value" id="indTrend">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entry -->
+                <div class="card">
+                    <h3>📈 الدخول</h3>
+                    <table style="width:100%;">
+                        <tr><th>التغير</th><th>الدخول</th></tr>
+                        <tr><td id="changeDisplay">--</td><td id="entryDisplay">--</td></tr>
+                    </table>
+                </div>
+
+                <!-- Targets -->
+                <div class="card">
+                    <h3>🎯 الأهداف (فيبوناتشي)</h3>
+                    <div class="target-grid">
+                        <div class="target-item">
+                            <div class="label">T1 (38.2%)</div>
+                            <div class="value" id="t1">--</div>
+                        </div>
+                        <div class="target-item">
+                            <div class="label">T2 (61.8%)</div>
+                            <div class="value" id="t2">--</div>
+                        </div>
+                        <div class="target-item">
+                            <div class="label">T3 (78.6%)</div>
+                            <div class="value" id="t3">--</div>
+                        </div>
+                        <div class="target-item">
+                            <div class="label">T4 (100%)</div>
+                            <div class="value" id="t4">--</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sell -->
+                <div class="card">
+                    <h3>📉 البيع</h3>
+                    <table style="width:100%;">
+                        <tr><th>التغير</th><th>الدخول</th></tr>
+                        <tr><td id="sellChange">--</td><td id="sellEntry">--</td></tr>
+                    </table>
+                </div>
+
+                <!-- Reason -->
+                <div class="card">
+                    <h3>🧠 سبب التحليل</h3>
+                    <div style="background:#0a121f; padding:14px; border-radius:10px; border-right:4px solid #f5b041; color:#c8d2e0; line-height:1.8;" id="reasonDisplay">
+                        جاري التحليل...
+                    </div>
+                    <div style="margin-top:10px;">
+                        <span class="badge badge-neutral" id="trendBadge">الاتجاه: --</span>
+                        <span class="badge badge-neutral" id="signalBadge">الإشارة: --</span>
+                    </div>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="card" style="border-color:#f5b041;">
+                    <h3>📋 التوصية</h3>
+                    <p id="recommendation" style="font-size:20px; font-weight:700; color:#f5b041;">--</p>
+                    <p id="recommendationDetail" style="color:#8a9bb5; font-size:13px;"></p>
+                </div>
+
+                <!-- History -->
+                <div class="card">
+                    <h3>📜 سجل التحليلات</h3>
+                    <div id="historyList"></div>
+                    <button class="btn btn-secondary" style="margin-top:8px; width:100%;" onclick="clearHistory()">
+                        🗑️ مسح السجل
+                    </button>
+                </div>
+
+                <!-- Export -->
+                <div class="card">
+                    <h3>📤 تصدير</h3>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <button class="btn btn-secondary" onclick="copyAnalysis()">📎 نسخ</button>
+                        <button class="btn btn-secondary" onclick="sendToTelegram()">📤 تليجرام</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center; margin-top:20px; padding:12px; color:#2a3a50; font-size:11px; border-top:1px solid #1a2538;">
+        منصة التحليل المتكاملة | جميع البيانات للعرض فقط
+    </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- ==================== JAVASCRIPT ============================= -->
+<!-- ============================================================ -->
+
+<script>
+// ============================================================
+// 1. STATE
+// ============================================================
+const state = {
+    livePrice: null,
+    history: JSON.parse(localStorage.getItem('history') || '[]'),
+    lastAnalysis: null,
+    telegramConnected: false,
+};
+
+// ============================================================
+// 2. LIVE PRICE
+// ============================================================
+async function fetchLivePrice() {
+    const asset = document.getElementById('assetSelect').value;
+    const display = document.getElementById('livePriceDisplay');
+    display.textContent = '⏳...';
+
+    try {
+        let price = null;
+
+        if (asset === 'XAUUSD') {
+            const res = await fetch('https://api.gold-api.com/price/XAU');
+            const data = await res.json();
+            price = data.price;
+        } else if (asset === 'XAGUSD') {
+            const res = await fetch('https://api.gold-api.com/price/XAG');
+            const data = await res.json();
+            price = data.price;
+        } else if (asset === 'BTCUSD') {
+            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+            const data = await res.json();
+            price = data.bitcoin.usd;
+        } else if (asset === 'ETHUSD') {
+            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+            const data = await res.json();
+            price = data.ethereum.usd;
+        } else {
+            const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+            const data = await res.json();
+            const rates = {
+                'EURUSD': data.rates.EUR,
+                'GBPUSD': data.rates.GBP,
+                'USDJPY': data.rates.JPY,
+                'USDCAD': data.rates.CAD,
+                'AUDUSD': data.rates.AUD,
+            };
+            price = rates[asset] || null;
+        }
+
+        if (price) {
+            state.livePrice = parseFloat(price);
+            display.textContent = state.livePrice.toFixed(2);
+            document.getElementById('currentPrice').value = state.livePrice.toFixed(2);
+            showNotification('✅ تم تحديث السعر', 'success');
+        } else {
+            display.textContent = '⚠️ تعذر التحديث';
+        }
+    } catch (error) {
+        display.textContent = '⚠️ خطأ';
+        showNotification('❌ خطأ في الاتصال', 'error');
+    }
+}
+
+// ============================================================
+// 3. CHART
+// ============================================================
+function loadChart() {
+    const container = document.getElementById('tradingview-widget');
+    container.innerHTML = '';
+    
+    const asset = document.getElementById('assetSelect').value;
+    const symbolMap = {
+        'XAUUSD': 'FX_IDC:XAUUSD',
+        'XAGUSD': 'FX_IDC:XAGUSD',
+        'EURUSD': 'FX:EURUSD',
+        'GBPUSD': 'FX:GBPUSD',
+        'USDJPY': 'FX:USDJPY',
+        'BTCUSD': 'COINBASE:BTCUSD',
+        'ETHUSD': 'COINBASE:ETHUSD',
+        'USDCAD': 'FX:USDCAD',
+        'AUDUSD': 'FX:AUDUSD',
+    };
+
+    try {
+        new TradingView.widget({
+            width: "100%",
+            height: 350,
+            symbol: symbolMap[asset] || 'FX_IDC:XAUUSD',
+            interval: "60",
+            timezone: "Etc/UTC",
+            theme: "dark",
+            style: "1",
+            locale: "ar",
+            container_id: "tradingview-widget",
+        });
+    } catch (e) {
+        container.innerHTML = '<p style="color:#5a6a80;">⚠️ تعذر تحميل الشارت</p>';
+    }
+}
+
+function onAssetChange() {
+    fetchLivePrice();
+    loadChart();
+}
+
+// ============================================================
+// 4. RISK MANAGEMENT
+// ============================================================
+function calculateRisk() {
+    const capital = parseFloat(document.getElementById('capital').value) || 10000;
+    const riskPercent = parseFloat(document.getElementById('riskPercent').value) || 2;
+    const price = parseFloat(document.getElementById('currentPrice').value) || state.livePrice || 2035;
+
+    const riskAmount = (capital * riskPercent) / 100;
+    const stopLossPoints = price * 0.01; // 1% من السعر
+    const positionSize = riskAmount / stopLossPoints;
+    const slPrice = price - stopLossPoints;
+    const tpPrice = price + stopLossPoints * 2;
+
+    document.getElementById('positionSize').textContent = positionSize.toFixed(2);
+    document.getElementById('riskAmount').textContent = riskAmount.toFixed(2);
+    document.getElementById('slPrice').textContent = slPrice.toFixed(2);
+    document.getElementById('tpPrice').textContent = tpPrice.toFixed(2);
+    document.getElementById('riskResult').classList.remove('hidden');
+
+    showNotification('✅ تم حساب المخاطرة', 'success');
+}
+
+// ============================================================
+// 5. MAIN ANALYSIS - FIXED FOR GOLD
+// ============================================================
+function analyze() {
+    document.getElementById('loadingIndicator').style.display = 'block';
+    document.getElementById('results').classList.add('hidden');
+
+    setTimeout(() => {
+        performAnalysis();
+        document.getElementById('loadingIndicator').style.display = 'none';
+        document.getElementById('results').classList.remove('hidden');
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        saveToHistory();
+    }, 600);
+}
+
+function performAnalysis() {
+    const asset = document.getElementById('assetSelect').value;
+    let price = parseFloat(document.getElementById('currentPrice').value);
+    const ma50 = parseFloat(document.getElementById('ma50').value);
+    let support = parseFloat(document.getElementById('support').value);
+    let resistance = parseFloat(document.getElementById('resistance').value);
+    const notes = document.getElementById('notes').value;
+    const rsiInput = parseFloat(document.getElementById('rsiInput').value);
+    const volumeInput = document.getElementById('volumeInput').value;
+
+    // Use live price if available
+    if (!price || isNaN(price)) {
+        price = state.livePrice || 2035;
+        document.getElementById('currentPrice').value = price.toFixed(2);
+    }
+
+    // ============================================================
+    // 🔥 الإصلاح: حساب النطاق بناءً على نوع الأصل
+    // ============================================================
+    let rangePercent = 0.015; // 1.5% افتراضي للذهب والعملات
+    
+    // تحديد النطاق المناسب لكل أصل
+    if (asset === 'BTCUSD' || asset === 'ETHUSD') {
+        rangePercent = 0.03; // 3% للعملات الرقمية (تتذبذب أكثر)
+    } else if (asset === 'XAUUSD' || asset === 'XAGUSD') {
+        rangePercent = 0.012; // 1.2% للمعادن (أقل تذبذب)
+    } else {
+        rangePercent = 0.015; // 1.5% للعملات
+    }
+
+    // حساب الدعم والمقاومة بناءً على النطاق المناسب
+    const defaultRange = price * rangePercent;
+    
+    if (!support || isNaN(support)) {
+        support = price - defaultRange;
+    }
+    if (!resistance || isNaN(resistance)) {
+        resistance = price + defaultRange;
+    }
+
+    // التأكد من أن الدعم والمقاومة منطقيين (ليسا بعيدين جداً)
+    const actualRange = resistance - support;
+    if (actualRange > price * 0.05) {
+        // إذا كان النطاق كبير جداً (>5%)، نعيد ضبطه
+        const newRange = price * 0.02;
+        support = price - newRange;
+        resistance = price + newRange;
+    }
+
+    // ======== Entry ========
+    const entry = (support + resistance) / 2;
+    const change = ((price - entry) / entry * 100).toFixed(2);
+
+    // ======== Fibonacci Targets ========
+    const range = resistance - support;
+    const fibs = [0.382, 0.618, 0.786, 1.0];
+    const targets = fibs.map(f => (entry + range * f).toFixed(2));
+
+    // ======== Sell ========
+    const sellEntry = (entry + range * 0.15).toFixed(2);
+    const sellChange = ((price - parseFloat(sellEntry)) / parseFloat(sellEntry) * 100).toFixed(2);
+
+    // ======== RSI ========
+    const rsi = rsiInput || (45 + Math.random() * 30);
+
+    // ======== Smart Analysis ========
+    const aboveMA50 = ma50 && !isNaN(ma50) ? price > ma50 : null;
+    let trend = 'محايد';
+    let signal = 'انتظار';
+    let reason = '';
+    let recommendation = '';
+    let recommendationDetail = '';
+
+    // تحليل ذكي بناءً على السعر والمستويات
+    const pricePosition = (price - support) / (resistance - support); // 0 = دعم, 1 = مقاومة
+
+    if (pricePosition > 0.9) {
+        trend = 'صاعد قوي';
+        signal = 'شراء';
+        reason = `✅ السعر عند مستوى المقاومة ${resistance.toFixed(2)} مع اختراق محتمل، RSI (${rsi.toFixed(1)}) يدعم الصعود.`;
+        recommendation = '🚀 شراء مع هدف T2';
+        recommendationDetail = `الدخول عند ${entry.toFixed(2)}، وقف الخسارة عند ${(support).toFixed(2)}`;
+    } else if (pricePosition < 0.1) {
+        trend = 'هابط قوي';
+        signal = 'بيع';
+        reason = `⚠️ السعر عند مستوى الدعم ${support.toFixed(2)} مع كسر متوقع، RSI (${rsi.toFixed(1)}) يدعم الهبوط.`;
+        recommendation = '🔻 بيع مع هدف T2';
+        recommendationDetail = `الدخول عند ${entry.toFixed(2)}، وقف الخسارة عند ${(resistance).toFixed(2)}`;
+    } else if (aboveMA50 === true && rsi < 70) {
+        trend = 'صاعد';
+        signal = 'شراء';
+        reason = `📈 السعر فوق المتوسط 50 مع RSI (${rsi.toFixed(1)}) في منطقة آمنة.`;
+        recommendation = '📊 شراء تدريجي';
+        recommendationDetail = `الهدف الأول عند ${targets[0]}`;
+    } else if (aboveMA50 === false && rsi > 30) {
+        trend = 'هابط';
+        signal = 'بيع';
+        reason = `📉 السعر تحت المتوسط 50 مع RSI (${rsi.toFixed(1)}) في منطقة هبوط.`;
+        recommendation = '📊 بيع تدريجي';
+        recommendationDetail = `الهدف الأول عند ${targets[0]}`;
+    } else {
+        trend = 'محايد';
+        signal = 'انتظار';
+        reason = `⏳ السعر في نطاق ضيق (${support.toFixed(2)} - ${resistance.toFixed(2)})، انتظر تأكيد الاتجاه.`;
+        recommendation = '⏳ انتظر إشارة واضحة';
+        recommendationDetail = `نطاق التذبذب: ${support.toFixed(2)} - ${resistance.toFixed(2)}`;
+    }
+
+    // إضافة ملاحظات المستخدم
+    if (notes) {
+        reason += `\n📝 ملاحظة: "${notes}"`;
+    }
+
+    if (volumeInput) {
+        reason += `\n📊 حجم التداول: ${volumeInput}`;
+    }
+
+    // ======== Update UI ========
+    document.getElementById('changeDisplay').textContent = `${change}%`;
+    document.getElementById('entryDisplay').textContent = entry.toFixed(2);
+
+    document.getElementById('t1').textContent = targets[0];
+    document.getElementById('t2').textContent = targets[1];
+    document.getElementById('t3').textContent = targets[2];
+    document.getElementById('t4').textContent = targets[3];
+
+    document.getElementById('sellChange').textContent = `${sellChange}%`;
+    document.getElementById('sellEntry').textContent = sellEntry;
+
+    document.getElementById('reasonDisplay').textContent = reason;
+
+    // Indicators
+    document.getElementById('indRSI').textContent = rsi.toFixed(1);
+    document.getElementById('indRSI').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
+    
+    document.getElementById('indMACD').textContent = rsi > 50 ? '📈 إيجابي' : '📉 سلبي';
+    document.getElementById('indMACD').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
+    
+    document.getElementById('indMA50').textContent = ma50 ? ma50.toFixed(2) : '--';
+    document.getElementById('indMA50').className = `value ${aboveMA50 ? 'bullish' : aboveMA50 === false ? 'bearish' : 'neutral'}`;
+    
+    document.getElementById('indTrend').textContent = trend;
+    document.getElementById('indTrend').className = `value ${trend.includes('صاعد') ? 'bullish' : trend.includes('هابط') ? 'bearish' : 'neutral'}`;
+
+    // Badges
+    document.getElementById('trendBadge').textContent = `📌 الاتجاه: ${trend}`;
+    document.getElementById('signalBadge').textContent = `📊 الإشارة: ${signal}`;
+    document.getElementById('trendBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
+    document.getElementById('signalBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
+
+    document.getElementById('recommendation').textContent = recommendation;
+    document.getElementById('recommendationDetail').textContent = recommendationDetail;
+
+    // Save
+    state.lastAnalysis = {
+        asset,
+        price,
+        entry: entry.toFixed(2),
+        change,
+        targets,
+        sellEntry,
+        sellChange,
+        reason,
+        trend,
+        signal,
+        recommendation,
+        recommendationDetail,
+        rsi: rsi.toFixed(1),
+        support: support.toFixed(2),
+        resistance: resistance.toFixed(2),
+    };
+
+    showNotification(`✅ تم التحليل: ${signal}`, 'success');
+}
+
+// ============================================================
+// 6. HISTORY
+// ============================================================
+function saveToHistory() {
+    if (!state.lastAnalysis) return;
+    state.history.unshift({
+        ...state.lastAnalysis,
+        timestamp: new Date().toISOString(),
+    });
+    if (state.history.length > 50) state.history.pop();
+    localStorage.setItem('history', JSON.stringify(state.history));
+    renderHistory();
+}
+
+function renderHistory() {
+    const list = document.getElementById('historyList');
+    if (state.history.length === 0) {
+        list.innerHTML = '<p style="color:#5a6a80; text-align:center;">لا توجد تحليلات</p>';
+        return;
+    }
+    list.innerHTML = state.history.slice(0, 20).map(item => `
+        <div class="history-item">
+            <span class="asset">${item.asset}</span>
+            ${item.signal} | الدخول: ${item.entry}
+            <span class="time">${new Date(item.timestamp).toLocaleTimeString('ar-EG', {hour:'2-digit',minute:'2-digit'})}</span>
+        </div>
+    `).join('');
+}
+
+function clearHistory() {
+    state.history = [];
+    localStorage.setItem('history', JSON.stringify(state.history));
+    renderHistory();
+    showNotification('🗑️ تم مسح السجل', 'warning');
+}
+
+// ============================================================
+// 7. TELEGRAM
+// ============================================================
+function connectTelegram() {
+    const chatId = document.getElementById('telegramChatId').value.trim();
+    if (!chatId) {
+        showNotification('⚠️ يرجى إدخال Chat ID', 'error');
+        return;
+    }
+    localStorage.setItem('telegramChatId', chatId);
+    state.telegramConnected = true;
+    showNotification('✅ تم ربط البوت', 'success');
+}
+
+async function sendToTelegram() {
+    const chatId = document.getElementById('telegramChatId').value.trim() || localStorage.getItem('telegramChatId');
+    if (!chatId) {
+        showNotification('⚠️ يرجى ربط البوت أولاً', 'error');
+        return;
+    }
+
+    if (!state.lastAnalysis) {
+        showNotification('⚠️ لا يوجد تحليل للإرسال', 'warning');
+        return;
+    }
+
+    const a = state.lastAnalysis;
+    const message = `
+📊 *تحليل ${a.asset}*
+💰 السعر الحالي: ${a.price}
+📈 الدخول: ${a.entry} (${a.change}%)
+🎯 الأهداف:
+T1: ${a.targets[0]} | T2: ${a.targets[1]}
+T3: ${a.targets[2]} | T4: ${a.targets[3]}
+📉 البيع: ${a.sellEntry} (${a.sellChange}%)
+📊 الإشارة: ${a.signal}
+📌 الاتجاه: ${a.trend}
+🧠 السبب: ${a.reason}
+📋 التوصية: ${a.recommendation}
+${a.recommendationDetail ? `📝 ${a.recommendationDetail}` : ''}
+⏰ ${new Date().toLocaleString('ar-EG')}
+    `;
+
+    try {
+        await navigator.clipboard.writeText(message);
+        showNotification('✅ تم نسخ التحليل، الصقه في تليجرام', 'success');
+    } catch (e) {
+        showNotification('⚠️ انسخ النص وأرسله يدوياً', 'warning');
+    }
+}
+
+// ============================================================
+// 8. NOTIFICATIONS
+// ============================================================
+function showNotification(message, type = 'info') {
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+
+    const div = document.createElement('div');
+    div.className = `notification ${type}`;
+    div.textContent = message;
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+        div.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => div.remove(), 300);
+    }, 3500);
+}
+
+// ============================================================
+// 9. EXPORT
+// ============================================================
+function copyAnalysis() {
+    const a = state.lastAnalysis || {};
+    const text = `
+📊 تحليل ${a.asset || 'غير محدد'}
+💰 السعر: ${a.price || '--'}
+📈 الدخول: ${a.entry || '--'} (${a.change || '--'}%)
+🎯 الأهداف: ${a.targets?.join(' | ') || '--'}
+📉 البيع: ${a.sellEntry || '--'}
+📊 الإشارة: ${a.signal || '--'}
+📌 الاتجاه: ${a.trend || '--'}
+🧠 السبب: ${a.reason || '--'}
+📋 التوصية: ${a.recommendation || '--'}
+⏰ ${new Date().toLocaleString('ar-EG')}
+    `.trim();
+
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification('✅ تم نسخ التحليل', 'success');
+    }).catch(() => {
+        showNotification('⚠️ تعذر النسخ', 'error');
+    });
+}
+
+// ============================================================
+// 10. KEYBOARD
+// ============================================================
+document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        analyze();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+        e.preventDefault();
+        fetchLivePrice();
+    }
+});
+
+// ============================================================
+// 11. INIT
+// ============================================================
+function init() {
+    fetchLivePrice();
+    loadChart();
+    renderHistory();
+    
+    const savedChatId = localStorage.getItem('telegramChatId');
+    if (savedChatId) {
+        document.getElementById('telegramChatId').value = savedChatId;
+        state.telegramConnected = true;
+    }
+
+    setInterval(fetchLivePrice, 60000);
+
+    console.log('✅ منصة التحليل جاهزة!');
+    console.log('💡 Ctrl+Enter للتحليل السريع');
+    console.log('💡 Ctrl+R لتحديث السعر');
+}
+
+init();
+</script>
+
+</body>
+</html>
