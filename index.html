@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0a0e17">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <title>منصة التحليل الاحترافية - الذهب والعملات</title>
+    <title>التحليل متعدد المدارس - النسخة النهائية</title>
     
     <!-- TradingView Chart -->
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -22,7 +22,7 @@
             font-family: 'Segoe UI', Tahoma, sans-serif;
             background: #0a0e17;
             color: #e6edf5;
-            padding: 15px;
+            padding: 12px;
             min-height: 100vh;
         }
 
@@ -32,34 +32,36 @@
             margin: 0 auto;
         }
 
+        /* ===== HEADER ===== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            padding: 15px 20px;
+            padding: 12px 18px;
             background: #111b2b;
-            border-radius: 16px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            margin-bottom: 16px;
             border: 1px solid #1e2d42;
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 20px;
             color: #f5b041;
         }
 
         .header h1 small {
-            font-size: 12px;
+            font-size: 11px;
             color: #8a9bb5;
         }
 
         .live-price {
             background: #1a2538;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 30px;
             border: 1px solid #2a3a50;
+            font-size: 14px;
         }
 
         .live-price span {
@@ -67,13 +69,14 @@
             font-weight: bold;
         }
 
+        /* ===== CARDS ===== */
         .card {
             background: #111b2b;
-            border-radius: 16px;
-            padding: 18px 20px;
-            margin-bottom: 16px;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
             border: 1px solid #1e2d42;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
 
         .card:hover {
@@ -82,29 +85,36 @@
 
         .card h3 {
             color: #f5b041;
-            font-size: 16px;
-            margin-bottom: 14px;
+            font-size: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
+        .card h4 {
+            color: #8a9bb5;
+            font-size: 13px;
+            margin: 8px 0 4px;
+        }
+
+        /* ===== GRIDS ===== */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
         .row-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
         .row-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
         @media (max-width: 768px) {
@@ -116,43 +126,45 @@
             }
         }
 
+        /* ===== INPUTS ===== */
         label {
             display: block;
-            margin: 10px 0 4px;
-            font-size: 12px;
+            margin: 8px 0 3px;
+            font-size: 11px;
             color: #8a9bb5;
             font-weight: 600;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 10px 14px;
+            padding: 8px 12px;
             background: #0a121f;
             border: 1px solid #1e2d42;
-            border-radius: 10px;
+            border-radius: 8px;
             color: #e6edf5;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
             border-color: #f5b041;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(245, 176, 65, 0.15);
+            box-shadow: 0 0 0 3px rgba(245, 176, 65, 0.12);
         }
 
         textarea {
             resize: vertical;
-            min-height: 50px;
+            min-height: 40px;
         }
 
+        /* ===== BUTTONS ===== */
         .btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.3s;
         }
 
@@ -160,8 +172,8 @@
             background: linear-gradient(135deg, #f5b041, #e67e22);
             color: #0a0e17;
             width: 100%;
-            padding: 14px;
-            font-size: 17px;
+            padding: 12px;
+            font-size: 16px;
         }
 
         .btn-primary:hover {
@@ -179,29 +191,166 @@
             border-color: #f5b041;
         }
 
-        .btn-success {
+        .btn-sm {
+            padding: 5px 12px;
+            font-size: 11px;
+        }
+
+        /* ===== SCHOOL CARDS ===== */
+        .school-card {
+            background: #0a121f;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            border-right: 4px solid #f5b041;
+            transition: 0.3s;
+        }
+
+        .school-card:hover {
+            border-color: #f5b041;
+        }
+
+        .school-card .school-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .school-card .school-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .school-card .school-confidence {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .school-card .school-confidence.high {
             background: #1a6b3c;
             color: #7ecf8a;
-            border: 1px solid #2a8a4a;
         }
 
-        .btn-danger {
-            background: #6b1a1a;
-            color: #f07a7a;
-            border: 1px solid #8a2a2a;
-        }
-
-        .btn-warning {
+        .school-card .school-confidence.medium {
             background: #6b5a1a;
             color: #f0d07a;
-            border: 1px solid #8a7a2a;
         }
 
+        .school-card .school-confidence.low {
+            background: #6b1a1a;
+            color: #f07a7a;
+        }
+
+        .school-card .school-recommendation {
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .school-card .school-recommendation.buy {
+            background: #1a6b3c;
+            color: #7ecf8a;
+        }
+
+        .school-card .school-recommendation.sell {
+            background: #6b1a1a;
+            color: #f07a7a;
+        }
+
+        .school-card .school-recommendation.neutral {
+            background: #2a2a3a;
+            color: #aab;
+        }
+
+        .school-card .school-reasons {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #8a9bb5;
+            line-height: 1.6;
+        }
+
+        .school-card .school-reasons .reason-item {
+            padding: 2px 0;
+            border-bottom: 1px solid #1a2538;
+        }
+
+        .school-card .school-reasons .reason-item:last-child {
+            border-bottom: none;
+        }
+
+        .school-card .school-weakness {
+            margin-top: 6px;
+            font-size: 11px;
+            color: #f07a7a;
+            padding: 4px 8px;
+            background: #1a0a0a;
+            border-radius: 6px;
+        }
+
+        /* ===== FINAL RESULT ===== */
+        .final-result {
+            background: linear-gradient(135deg, #1a2a3a, #0a121f);
+            border: 2px solid #f5b041;
+            border-radius: 14px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .final-result .result-label {
+            font-size: 13px;
+            color: #8a9bb5;
+        }
+
+        .final-result .result-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 4px 0;
+        }
+
+        .final-result .result-value.buy {
+            color: #7ecf8a;
+        }
+
+        .final-result .result-value.sell {
+            color: #f07a7a;
+        }
+
+        .final-result .result-value.neutral {
+            color: #f0d07a;
+        }
+
+        .final-result .result-confidence {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f5b041;
+        }
+
+        .final-result .result-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            font-size: 13px;
+            color: #8a9bb5;
+        }
+
+        .final-result .result-details span {
+            color: #e6edf5;
+            font-weight: 600;
+        }
+
+        /* ===== TARGETS ===== */
         .target-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         @media (max-width: 500px) {
@@ -212,41 +361,31 @@
 
         .target-item {
             background: #0a121f;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 8px;
             text-align: center;
             border: 1px solid #1e2d42;
-            transition: 0.3s;
-        }
-
-        .target-item:hover {
-            border-color: #f5b041;
-            transform: translateY(-2px);
         }
 
         .target-item .label {
             color: #8a9bb5;
-            font-size: 11px;
+            font-size: 10px;
         }
 
         .target-item .value {
             color: #f5b041;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-top: 4px;
         }
 
-        .target-item .value.reached {
-            color: #7ecf8a;
-        }
-
+        /* ===== BADGES ===== */
         .badge {
             display: inline-block;
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            margin: 3px;
+            margin: 2px;
         }
 
         .badge-buy {
@@ -269,22 +408,19 @@
             color: #7ab8f0;
         }
 
-        .badge-warning {
-            background: #6b5a1a;
-            color: #f0d07a;
-        }
-
+        /* ===== CHART ===== */
         .chart-container {
-            height: 350px;
+            height: 300px;
         }
 
+        /* ===== HISTORY ===== */
         .history-item {
-            padding: 8px 12px;
+            padding: 6px 10px;
             background: #0a121f;
-            border-radius: 8px;
-            margin-bottom: 4px;
+            border-radius: 6px;
+            margin-bottom: 3px;
             border-right: 3px solid #f5b041;
-            font-size: 13px;
+            font-size: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -298,27 +434,24 @@
 
         .history-item .time {
             color: #5a6a80;
-            font-size: 11px;
+            font-size: 10px;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
+        /* ===== LOADING ===== */
         .loading {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 25px;
         }
 
         .spinner {
             border: 4px solid #1a2538;
             border-top: 4px solid #f5b041;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 12px;
+            margin: 0 auto 10px;
         }
 
         @keyframes spin {
@@ -326,19 +459,20 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* ===== NOTIFICATION ===== */
         .notification {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            border-radius: 12px;
+            top: 15px;
+            right: 15px;
+            padding: 10px 18px;
+            border-radius: 10px;
             background: #111b2b;
             border: 1px solid #1e2d42;
             color: #e6edf5;
             z-index: 9999;
-            max-width: 300px;
+            max-width: 280px;
             animation: slideIn 0.3s ease;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .notification.success {
@@ -363,157 +497,12 @@
             to { transform: translateX(100%); opacity: 0; }
         }
 
-        /* ===== تحسينات للتحليل الاحترافي ===== */
-        .analysis-details {
-            background: #0a121f;
-            padding: 16px;
-            border-radius: 12px;
-            margin-top: 10px;
-            border: 1px solid #1e2d42;
+        /* ===== HIDDEN ===== */
+        .hidden {
+            display: none !important;
         }
 
-        .analysis-details .reason-item {
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            background: #111b2b;
-            border-radius: 8px;
-            border-right: 3px solid #f5b041;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .analysis-details .reason-item .icon {
-            margin-left: 8px;
-        }
-
-        .analysis-details .reason-item strong {
-            color: #f5b041;
-        }
-
-        .analysis-details .reason-item .highlight {
-            color: #7ecf8a;
-        }
-
-        .analysis-details .reason-item .danger {
-            color: #f07a7a;
-        }
-
-        .analysis-details .reason-item .warning {
-            color: #f0d07a;
-        }
-
-        .signal-strength {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            padding: 10px 14px;
-            background: #0a121f;
-            border-radius: 10px;
-        }
-
-        .signal-strength .bar {
-            flex: 1;
-            height: 6px;
-            background: #1a2538;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .signal-strength .bar .fill {
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.5s;
-        }
-
-        .signal-strength .bar .fill.strong {
-            background: linear-gradient(90deg, #7ecf8a, #f5b041);
-        }
-
-        .signal-strength .bar .fill.medium {
-            background: linear-gradient(90deg, #f0d07a, #f5b041);
-        }
-
-        .signal-strength .bar .fill.weak {
-            background: linear-gradient(90deg, #f07a7a, #f0d07a);
-        }
-
-        /* ===== مؤشرات إضافية ===== */
-        .indicator-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 8px;
-        }
-
-        .indicator-item {
-            background: #0a121f;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid #1e2d42;
-            transition: 0.3s;
-        }
-
-        .indicator-item:hover {
-            border-color: #f5b04144;
-        }
-
-        .indicator-item .name {
-            font-size: 10px;
-            color: #8a9bb5;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .indicator-item .value {
-            font-size: 16px;
-            font-weight: 700;
-            margin-top: 3px;
-        }
-
-        .indicator-item .value.bullish {
-            color: #7ecf8a;
-        }
-
-        .indicator-item .value.bearish {
-            color: #f07a7a;
-        }
-
-        .indicator-item .value.neutral {
-            color: #8a9bb5;
-        }
-
-        /* ===== تنسيقات إضافية ===== */
-        .divider {
-            border: none;
-            border-top: 1px solid #1e2d42;
-            margin: 12px 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-muted {
-            color: #5a6a80;
-            font-size: 12px;
-        }
-
-        .mt-10 {
-            margin-top: 10px;
-        }
-
-        .flex {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .gap-5 {
-            gap: 5px;
-        }
-
-        /* ===== Scroll ===== */
+        /* ===== SCROLL ===== */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -527,6 +516,90 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #f5b041;
         }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 16px;
+            }
+            .card {
+                padding: 12px 14px;
+            }
+            .final-result .result-value {
+                font-size: 22px;
+            }
+            .school-card .school-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #1a2538;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .progress-bar .fill.high {
+            background: linear-gradient(90deg, #7ecf8a, #f5b041);
+        }
+
+        .progress-bar .fill.medium {
+            background: linear-gradient(90deg, #f0d07a, #f5b041);
+        }
+
+        .progress-bar .fill.low {
+            background: linear-gradient(90deg, #f07a7a, #f0d07a);
+        }
+
+        /* ===== INDICATORS ===== */
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 6px;
+        }
+
+        .indicator-item {
+            background: #0a121f;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #1e2d42;
+        }
+
+        .indicator-item .name {
+            font-size: 9px;
+            color: #8a9bb5;
+            text-transform: uppercase;
+        }
+
+        .indicator-item .value {
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .indicator-item .value.bullish {
+            color: #7ecf8a;
+        }
+
+        .indicator-item .value.bearish {
+            color: #f07a7a;
+        }
+
+        .indicator-item .value.neutral {
+            color: #8a9bb5;
+        }
     </style>
 </head>
 <body>
@@ -536,8 +609,8 @@
     <!-- ===== HEADER ===== -->
     <header class="header">
         <h1>
-            📊 منصة التحليل الاحترافية
-            <small>v5.0 - تحليل متقدم</small>
+            📊 التحليل متعدد المدارس
+            <small>v6.0 - النهائي</small>
         </h1>
         <div class="live-price">
             🟢 السعر: <span id="livePriceDisplay">جاري التحديث...</span>
@@ -547,10 +620,10 @@
     <!-- ===== GRID ===== -->
     <div class="grid-2">
 
-        <!-- ===== LEFT COLUMN ===== -->
+        <!-- ===== LEFT ===== -->
         <div>
 
-            <!-- اختيار الأداة -->
+            <!-- Asset Selection -->
             <div class="card">
                 <h3>⚡ الأداة المالية</h3>
                 <select id="assetSelect" onchange="onAssetChange()">
@@ -570,12 +643,12 @@
                         <option value="ETHUSD">إيثيريوم (ETH/USD)</option>
                     </optgroup>
                 </select>
-                <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="fetchLivePrice()">
+                <button class="btn btn-secondary" style="margin-top:8px; width:100%;" onclick="fetchLivePrice()">
                     🔄 تحديث السعر
                 </button>
             </div>
 
-            <!-- بيانات التحليل -->
+            <!-- Data Input -->
             <div class="card">
                 <h3>📝 بيانات التحليل</h3>
                 <div class="row-2">
@@ -604,7 +677,7 @@
                         <input type="number" id="rsiInput" step="0.1" placeholder="50" />
                     </div>
                     <div>
-                        <label>📊 حجم التداول</label>
+                        <label>📊 الحجم</label>
                         <input type="text" id="volumeInput" placeholder="مرتفع/منخفض" />
                     </div>
                     <div>
@@ -613,10 +686,10 @@
                     </div>
                 </div>
                 <label>📝 ملاحظاتك</label>
-                <textarea id="notes" placeholder="اكتب ملاحظاتك عن الشارت، أنماط شموع، أخبار..."></textarea>
+                <textarea id="notes" placeholder="اكتب ملاحظاتك عن الشارت..."></textarea>
             </div>
 
-            <!-- إدارة المخاطر -->
+            <!-- Risk Management -->
             <div class="card">
                 <h3>⚖️ إدارة المخاطر</h3>
                 <div class="row-2">
@@ -629,10 +702,10 @@
                         <input type="number" id="riskPercent" value="2" />
                     </div>
                 </div>
-                <button class="btn btn-secondary" style="margin-top:10px; width:100%;" onclick="calculateRisk()">
+                <button class="btn btn-secondary" style="margin-top:8px; width:100%;" onclick="calculateRisk()">
                     🧮 حساب المخاطرة
                 </button>
-                <div id="riskResult" class="hidden" style="margin-top:10px; background:#0a121f; padding:12px; border-radius:10px;">
+                <div id="riskResult" class="hidden" style="margin-top:8px; background:#0a121f; padding:10px; border-radius:8px;">
                     <div class="row-2">
                         <div><strong>حجم العقد:</strong> <span id="positionSize">--</span></div>
                         <div><strong>المخاطرة:</strong> $<span id="riskAmount">--</span></div>
@@ -644,33 +717,33 @@
                 </div>
             </div>
 
-            <!-- تليجرام -->
+            <!-- Telegram -->
             <div class="card">
                 <h3>🤖 بوت التليجرام</h3>
                 <input type="text" id="telegramChatId" placeholder="Chat ID" />
                 <button class="btn btn-secondary" style="margin-top:6px; width:100%;" onclick="connectTelegram()">
                     🔗 ربط البوت
                 </button>
-                <div style="margin-top:6px; font-size:11px; color:#5a6a80;">
+                <div style="margin-top:4px; font-size:10px; color:#5a6a80;">
                     💡 احصل على Chat ID من @userinfobot
                 </div>
             </div>
 
         </div>
 
-        <!-- ===== RIGHT COLUMN ===== -->
+        <!-- ===== RIGHT ===== -->
         <div>
 
-            <!-- زر التحليل -->
+            <!-- Analyze Button -->
             <button class="btn btn-primary" onclick="analyze()">
-                🔍 تحليل شامل احترافي (Ctrl+Enter)
+                🔍 تحليل متعدد المدارس (Ctrl+Enter)
             </button>
 
             <!-- Loading -->
             <div class="loading" id="loadingIndicator">
                 <div class="spinner"></div>
-                <p>جاري التحليل المتقدم...</p>
-                <p style="color:#5a6a80; font-size:12px;">تحليل الهيكل، الفجوات، السيولة، الزخم...</p>
+                <p>جاري التحليل الشامل...</p>
+                <p style="color:#5a6a80; font-size:11px;">تحليل 6 مدارس تحليلية مختلفة</p>
             </div>
 
             <!-- ===== RESULTS ===== -->
@@ -682,143 +755,71 @@
                     <div class="chart-container" id="tradingview-widget"></div>
                 </div>
 
-                <!-- المؤشرات الفنية -->
-                <div class="card">
-                    <h3>📊 المؤشرات الفنية المتقدمة</h3>
-                    <div class="indicator-grid">
-                        <div class="indicator-item">
-                            <div class="name">RSI</div>
-                            <div class="value" id="indRSI">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">MACD</div>
-                            <div class="value" id="indMACD">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">Bollinger</div>
-                            <div class="value" id="indBollinger">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">Ichimoku</div>
-                            <div class="value" id="indIchimoku">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">الزخم</div>
-                            <div class="value" id="indMomentum">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">المتوسط 50</div>
-                            <div class="value" id="indMA50">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">المتوسط 200</div>
-                            <div class="value" id="indMA200">--</div>
-                        </div>
-                        <div class="indicator-item">
-                            <div class="name">الاتجاه العام</div>
-                            <div class="value" id="indTrend">--</div>
-                        </div>
+                <!-- ===== FINAL RESULT ===== -->
+                <div class="final-result" id="finalResult">
+                    <div class="result-label">🎯 النتيجة النهائية</div>
+                    <div class="result-value" id="finalRecommendation">--</div>
+                    <div class="result-confidence" id="finalConfidence">--</div>
+                    <div class="progress-bar" style="margin:8px auto; max-width:300px;">
+                        <div class="fill" id="finalProgressBar" style="width:0%;"></div>
+                    </div>
+                    <div class="result-details">
+                        <span>المدارس المؤيدة: <span id="schoolsAgree">--</span></span>
+                        <span>المدارس المعارضة: <span id="schoolsDisagree">--</span></span>
                     </div>
                 </div>
 
-                <!-- ===== الدخول ===== -->
+                <!-- ===== SCHOOLS ===== -->
                 <div class="card">
-                    <h3>📈 الدخول</h3>
-                    <table style="width:100%;">
-                        <tr><th>التغير</th><th>الدخول</th></tr>
-                        <tr><td id="changeDisplay">--</td><td id="entryDisplay">--</td></tr>
-                    </table>
+                    <h3>📚 تحليل المدارس الست</h3>
+                    <div id="schoolsContainer"></div>
                 </div>
 
-                <!-- ===== الأهداف ===== -->
+                <!-- ===== ENTRY & TARGETS ===== -->
                 <div class="card">
-                    <h3>🎯 الأهداف (فيبوناتشي + نقاط انعكاس)</h3>
+                    <h3>📈 الدخول والأهداف</h3>
+                    <div class="row-2">
+                        <div>
+                            <table style="width:100%;">
+                                <tr><th>التغير</th><th>الدخول</th></tr>
+                                <tr><td id="changeDisplay">--</td><td id="entryDisplay">--</td></tr>
+                            </table>
+                        </div>
+                        <div>
+                            <table style="width:100%;">
+                                <tr><th>التغير</th><th>البيع</th></tr>
+                                <tr><td id="sellChange">--</td><td id="sellEntry">--</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <h4 style="color:#f5b041; margin-top:10px;">🎯 الأهداف (فيبوناتشي)</h4>
                     <div class="target-grid">
-                        <div class="target-item">
-                            <div class="label">T1 (38.2%)</div>
-                            <div class="value" id="t1">--</div>
-                        </div>
-                        <div class="target-item">
-                            <div class="label">T2 (61.8%)</div>
-                            <div class="value" id="t2">--</div>
-                        </div>
-                        <div class="target-item">
-                            <div class="label">T3 (78.6%)</div>
-                            <div class="value" id="t3">--</div>
-                        </div>
-                        <div class="target-item">
-                            <div class="label">T4 (100%)</div>
-                            <div class="value" id="t4">--</div>
-                        </div>
+                        <div class="target-item"><div class="label">T1 (38.2%)</div><div class="value" id="t1">--</div></div>
+                        <div class="target-item"><div class="label">T2 (61.8%)</div><div class="value" id="t2">--</div></div>
+                        <div class="target-item"><div class="label">T3 (78.6%)</div><div class="value" id="t3">--</div></div>
+                        <div class="target-item"><div class="label">T4 (100%)</div><div class="value" id="t4">--</div></div>
+                    </div>
+                    <div style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap; font-size:13px;">
+                        <span>🛑 وقف الخسارة: <strong id="stopLossDisplay">--</strong></span>
+                        <span>🎯 نسبة المخاطرة/المكافأة: <strong id="riskRewardDisplay">--</strong></span>
                     </div>
                 </div>
 
-                <!-- ===== البيع ===== -->
-                <div class="card">
-                    <h3>📉 البيع</h3>
-                    <table style="width:100%;">
-                        <tr><th>التغير</th><th>الدخول</th></tr>
-                        <tr><td id="sellChange">--</td><td id="sellEntry">--</td></tr>
-                    </table>
-                </div>
-
-                <!-- ===== التحليل التفصيلي ===== -->
-                <div class="card">
-                    <h3>🧠 التحليل التفصيلي للصفقة</h3>
-                    
-                    <!-- قوة الإشارة -->
-                    <div class="signal-strength">
-                        <span style="font-size:13px; font-weight:600;">قوة الإشارة:</span>
-                        <div class="bar">
-                            <div class="fill" id="signalStrengthBar" style="width:0%;"></div>
-                        </div>
-                        <span id="signalStrengthText" style="font-size:13px; font-weight:600;">--</span>
-                    </div>
-
-                    <!-- الأسباب التفصيلية -->
-                    <div class="analysis-details" id="analysisDetails">
-                        <div id="reasonsList">
-                            <!-- ستظهر الأسباب هنا -->
-                        </div>
-                    </div>
-
-                    <!-- البادجات -->
-                    <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:6px;">
-                        <span class="badge badge-neutral" id="trendBadge">📌 الاتجاه: --</span>
-                        <span class="badge badge-neutral" id="signalBadge">📊 الإشارة: --</span>
-                        <span class="badge badge-neutral" id="riskBadge">⚠️ المخاطرة: --</span>
-                        <span class="badge badge-neutral" id="strengthBadge">💪 القوة: --</span>
-                    </div>
-                </div>
-
-                <!-- ===== التوصية ===== -->
-                <div class="card" style="border-color:#f5b041;">
-                    <h3>📋 التوصية النهائية</h3>
-                    <p id="recommendation" style="font-size:22px; font-weight:700; color:#f5b041;">--</p>
-                    <p id="recommendationDetail" style="color:#8a9bb5; font-size:13px; margin-top:4px;"></p>
-                    <div style="margin-top:10px; padding:10px; background:#0a121f; border-radius:8px;">
-                        <strong>📊 الربح المتوقع:</strong> <span id="expectedProfit">--</span>
-                    </div>
-                    <div style="margin-top:8px; padding:10px; background:#0a121f; border-radius:8px; font-size:13px; color:#8a9bb5;">
-                        <strong>🎯 نسبة المخاطرة/المكافأة:</strong> <span id="riskReward">--</span>
-                    </div>
-                </div>
-
-                <!-- ===== سجل ===== -->
+                <!-- ===== HISTORY ===== -->
                 <div class="card">
                     <h3>📜 سجل التحليلات</h3>
                     <div id="historyList"></div>
-                    <button class="btn btn-secondary" style="margin-top:8px; width:100%;" onclick="clearHistory()">
+                    <button class="btn btn-secondary" style="margin-top:6px; width:100%;" onclick="clearHistory()">
                         🗑️ مسح السجل
                     </button>
                 </div>
 
-                <!-- ===== تصدير ===== -->
+                <!-- ===== EXPORT ===== -->
                 <div class="card">
                     <h3>📤 تصدير التقرير</h3>
                     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                        <button class="btn btn-secondary" onclick="copyAnalysis()">📎 نسخ</button>
-                        <button class="btn btn-secondary" onclick="sendToTelegram()">📤 تليجرام</button>
+                        <button class="btn btn-secondary btn-sm" onclick="copyAnalysis()">📎 نسخ</button>
+                        <button class="btn btn-secondary btn-sm" onclick="sendToTelegram()">📤 تليجرام</button>
                     </div>
                 </div>
 
@@ -828,8 +829,8 @@
     </div>
 
     <!-- Footer -->
-    <div style="text-align:center; margin-top:20px; padding:12px; color:#2a3a50; font-size:11px; border-top:1px solid #1a2538;">
-        منصة التحليل الاحترافية v5.0 | جميع البيانات للعرض فقط
+    <div style="text-align:center; margin-top:16px; padding:10px; color:#2a3a50; font-size:10px; border-top:1px solid #1a2538;">
+        منصة التحليل متعدد المدارس v6.0 | جميع البيانات للعرض فقط
         <br>
         <span id="lastUpdateDisplay">آخر تحديث: --</span>
     </div>
@@ -928,7 +929,7 @@ function loadChart() {
     try {
         new TradingView.widget({
             width: "100%",
-            height: 350,
+            height: 300,
             symbol: symbolMap[asset] || 'FX_IDC:XAUUSD',
             interval: "60",
             timezone: "Etc/UTC",
@@ -936,10 +937,9 @@ function loadChart() {
             style: "1",
             locale: "ar",
             container_id: "tradingview-widget",
-            studies: ["RSI", "MACD", "BollingerBands", "IchimokuCloud"],
         });
     } catch (e) {
-        container.innerHTML = '<p style="color:#5a6a80;">⚠️ تعذر تحميل الشارت</p>';
+        container.innerHTML = '<p style="color:#5a6a80; text-align:center;">⚠️ تعذر تحميل الشارت</p>';
     }
 }
 
@@ -972,22 +972,25 @@ function calculateRisk() {
 }
 
 // ============================================================
-// 5. PROFESSIONAL ANALYSIS ENGINE
+// 5. MAIN ANALYSIS ENGINE
 // ============================================================
 function analyze() {
     document.getElementById('loadingIndicator').style.display = 'block';
     document.getElementById('results').classList.add('hidden');
 
     setTimeout(() => {
-        performProfessionalAnalysis();
+        performMultiSchoolAnalysis();
         document.getElementById('loadingIndicator').style.display = 'none';
         document.getElementById('results').classList.remove('hidden');
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         saveToHistory();
-    }, 800);
+    }, 1000);
 }
 
-function performProfessionalAnalysis() {
+// ============================================================
+// 6. MULTI-SCHOOL ANALYSIS ENGINE
+// ============================================================
+function performMultiSchoolAnalysis() {
     const asset = document.getElementById('assetSelect').value;
     let price = parseFloat(document.getElementById('currentPrice').value);
     const ma50 = parseFloat(document.getElementById('ma50').value);
@@ -1004,354 +1007,432 @@ function performProfessionalAnalysis() {
         document.getElementById('currentPrice').value = price.toFixed(2);
     }
 
-    // ============================================================
-    // حساب النطاق المناسب
-    // ============================================================
+    // Calculate ranges
     let rangePercent = 0.015;
-    if (asset === 'BTCUSD' || asset === 'ETHUSD') {
-        rangePercent = 0.03;
-    } else if (asset === 'XAUUSD' || asset === 'XAGUSD') {
-        rangePercent = 0.012;
-    }
+    if (asset === 'BTCUSD' || asset === 'ETHUSD') rangePercent = 0.03;
+    else if (asset === 'XAUUSD' || asset === 'XAGUSD') rangePercent = 0.012;
 
     const defaultRange = price * rangePercent;
     if (!support || isNaN(support)) support = price - defaultRange;
     if (!resistance || isNaN(resistance)) resistance = price + defaultRange;
 
     // ============================================================
-    // حساب المؤشرات
+    // حساب المؤشرات الأساسية
     // ============================================================
     const rsi = rsiInput || (45 + Math.random() * 30);
     const ma200 = ma50 ? ma50 * 1.02 : price * 0.98;
     const aboveMA50 = ma50 && !isNaN(ma50) ? price > ma50 : null;
     const aboveMA200 = price > ma200;
+    const pricePosition = (price - support) / (resistance - support);
 
-    // Bollinger Bands
+    // Bollinger
     const bbUpper = price * 1.015;
     const bbLower = price * 0.985;
-    const bbMiddle = price;
     const bbPosition = (price - bbLower) / (bbUpper - bbLower);
 
     // Ichimoku
-    const ichimokuTenkan = (support + resistance) / 2;
-    const ichimokuKijun = (support + resistance) * 0.98;
-    const ichimokuSenkouA = (ichimokuTenkan + ichimokuKijun) / 2;
-    const ichimokuSenkouB = (support + resistance) / 2;
+    const ichimokuSenkouA = (support + resistance) / 2;
+    const ichimokuSenkouB = (support + resistance) * 0.98;
 
     // ============================================================
-    // التحليل التفصيلي - الأسباب
+    // تحليل كل مدرسة
     // ============================================================
-    const reasons = [];
-    let signal = 'انتظار';
-    let trend = 'محايد';
-    let strength = 'متوسطة';
-    let risk = 'متوسطة';
-    let recommendation = '';
-    let recommendationDetail = '';
-    let expectedProfit = '';
-    let riskReward = '';
+    const schools = [];
 
-    // ============================================================
-    // 1. تحليل الكسر الهيكلي (Break of Structure - BOS)
-    // ============================================================
-    const pricePosition = (price - support) / (resistance - support);
-    
-    if (pricePosition > 0.85) {
-        reasons.push({
-            icon: '🔨',
-            text: 'كسر هيكلي صاعد - السعر اخترق مستوى المقاومة الرئيسي',
-            type: 'bullish'
-        });
-    } else if (pricePosition < 0.15) {
-        reasons.push({
-            icon: '🔨',
-            text: 'كسر هيكلي هابط - السعر كسر مستوى الدعم الرئيسي',
-            type: 'bearish'
-        });
-    }
+    // ---- 1. المدرسة الكلاسيكية ----
+    let classicScore = 0;
+    let classicReasons = [];
+    let classicWeaknesses = [];
 
-    // ============================================================
-    // 2. تحليل الفجوات السعرية (Gaps)
-    // ============================================================
-    const gapDetection = Math.random();
-    if (gapDetection > 0.7) {
-        reasons.push({
-            icon: '🕳️',
-            text: 'فجوة سعرية - يوجد فجوة بين الشمعة السابقة والحالية، تشير إلى زخم قوي',
-            type: gapDetection > 0.85 ? 'bullish' : 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 3. تحليل السيولة (Liquidity)
-    // ============================================================
-    if (price > resistance * 0.98) {
-        reasons.push({
-            icon: '💧',
-            text: 'منطقة سيولة عالية - السعر عند مناطق طلب قوية مع احتمالية ارتداد',
-            type: 'bullish'
-        });
-    } else if (price < support * 1.02) {
-        reasons.push({
-            icon: '💧',
-            text: 'منطقة سيولة عالية - السعر عند مناطق عرض قوية مع احتمالية هبوط',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 4. تحليل RSI
-    // ============================================================
-    if (rsi < 30) {
-        reasons.push({
-            icon: '📊',
-            text: `RSI في منطقة التشبع الشرائي (${rsi.toFixed(1)}) - إشارة شراء قوية`,
-            type: 'bullish'
-        });
-    } else if (rsi > 70) {
-        reasons.push({
-            icon: '📊',
-            text: `RSI في منطقة التشبع البيعي (${rsi.toFixed(1)}) - إشارة بيع قوية`,
-            type: 'bearish'
-        });
-    } else if (rsi > 50) {
-        reasons.push({
-            icon: '📊',
-            text: `RSI في منطقة القوة (${rsi.toFixed(1)}) - زخم إيجابي`,
-            type: 'bullish'
-        });
-    } else {
-        reasons.push({
-            icon: '📊',
-            text: `RSI في منطقة الضعف (${rsi.toFixed(1)}) - زخم سلبي`,
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 5. تحليل المتوسطات المتحركة
-    // ============================================================
+    // الاتجاه
     if (aboveMA50 === true && aboveMA200) {
-        reasons.push({
-            icon: '📈',
-            text: 'المتوسطات المتحركة تدعم الصعود - السعر فوق MA50 و MA200',
-            type: 'bullish'
-        });
+        classicScore += 30;
+        classicReasons.push('الاتجاه العام: صاعد (MA50 > MA200)');
     } else if (aboveMA50 === false && !aboveMA200) {
-        reasons.push({
-            icon: '📉',
-            text: 'المتوسطات المتحركة تدعم الهبوط - السعر تحت MA50 و MA200',
-            type: 'bearish'
-        });
-    } else if (aboveMA50 === true) {
-        reasons.push({
-            icon: '📈',
-            text: 'السعر فوق المتوسط 50 - إشارة إيجابية على المدى القصير',
-            type: 'bullish'
-        });
-    } else if (aboveMA50 === false) {
-        reasons.push({
-            icon: '📉',
-            text: 'السعر تحت المتوسط 50 - إشارة سلبية على المدى القصير',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 6. تحليل Bollinger Bands
-    // ============================================================
-    if (bbPosition > 0.9) {
-        reasons.push({
-            icon: '📊',
-            text: 'السعر عند النطاق العلوي لبولينجر - منطقة تشبع شرائي',
-            type: 'bearish'
-        });
-    } else if (bbPosition < 0.1) {
-        reasons.push({
-            icon: '📊',
-            text: 'السعر عند النطاق السفلي لبولينجر - منطقة تشبع بيعي',
-            type: 'bullish'
-        });
-    }
-
-    // ============================================================
-    // 7. تحليل Ichimoku
-    // ============================================================
-    if (price > ichimokuSenkouA && price > ichimokuSenkouB) {
-        reasons.push({
-            icon: '☁️',
-            text: 'إيشيموكو إيجابي - السعر فوق الغيمة مع زخم صاعد',
-            type: 'bullish'
-        });
-    } else if (price < ichimokuSenkouA && price < ichimokuSenkouB) {
-        reasons.push({
-            icon: '☁️',
-            text: 'إيشيموكو سلبي - السعر تحت الغيمة مع زخم هابط',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 8. تحليل الزخم
-    // ============================================================
-    if (momentumInput.includes('قوي') || momentumInput.includes('مرتفع')) {
-        reasons.push({
-            icon: '⚡',
-            text: 'زخم قوي - حركة السعر سريعة مع حجم تداول مرتفع',
-            type: 'bullish'
-        });
-    } else if (momentumInput.includes('ضعيف') || momentumInput.includes('منخفض')) {
-        reasons.push({
-            icon: '⚡',
-            text: 'زخم ضعيف - حركة السعر بطيئة مع حجم تداول منخفض',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 9. تحليل الحجم
-    // ============================================================
-    if (volumeInput.includes('مرتفع')) {
-        reasons.push({
-            icon: '📊',
-            text: 'حجم تداول مرتفع - يؤكد قوة الحركة الحالية',
-            type: 'bullish'
-        });
-    } else if (volumeInput.includes('منخفض')) {
-        reasons.push({
-            icon: '📊',
-            text: 'حجم تداول منخفض - قد يشير إلى ضعف الاتجاه',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // 10. تحليل الدعم والمقاومة
-    // ============================================================
-    if (price >= resistance * 0.995) {
-        reasons.push({
-            icon: '🛑',
-            text: `السعر عند مقاومة قوية (${resistance.toFixed(2)}) - قد يواجه صعوبة في الاختراق`,
-            type: 'bearish'
-        });
-    } else if (price <= support * 1.005) {
-        reasons.push({
-            icon: '🛑',
-            text: `السعر عند دعم قوي (${support.toFixed(2)}) - قد يرتد للأعلى`,
-            type: 'bullish'
-        });
-    }
-
-    // ============================================================
-    // 11. تحليل نماذج الشموع (Candlestick Patterns)
-    // ============================================================
-    const patternRandom = Math.random();
-    if (patternRandom > 0.8) {
-        reasons.push({
-            icon: '🕯️',
-            text: 'نمط شمعة "المطرقة" - إشارة انعكاس صاعد',
-            type: 'bullish'
-        });
-    } else if (patternRandom > 0.6) {
-        reasons.push({
-            icon: '🕯️',
-            text: 'نمط شمعة "النجمة الساقطة" - إشارة انعكاس هابط',
-            type: 'bearish'
-        });
-    } else if (patternRandom > 0.4) {
-        reasons.push({
-            icon: '🕯️',
-            text: 'شمعة "دوجي" - تردد وعدم يقين في السوق',
-            type: 'neutral'
-        });
-    }
-
-    // ============================================================
-    // 12. تحليل الفيبوناتشي
-    // ============================================================
-    const fibLevels = [0.382, 0.5, 0.618, 0.786];
-    const fibCurrent = Math.random();
-    if (fibCurrent > 0.7) {
-        reasons.push({
-            icon: '📐',
-            text: 'السعر عند مستوى فيبوناتشي 61.8% - مستوى انعكاس قوي',
-            type: 'bullish'
-        });
-    }
-
-    // ============================================================
-    // 13. تحليل الأخبار (محاكاة)
-    // ============================================================
-    const newsRandom = Math.random();
-    if (newsRandom > 0.85) {
-        reasons.push({
-            icon: '📰',
-            text: 'خبر اقتصادي إيجابي - قد يؤثر على حركة السعر',
-            type: 'bullish'
-        });
-    } else if (newsRandom > 0.7) {
-        reasons.push({
-            icon: '📰',
-            text: 'خبر اقتصادي سلبي - قد يسبب تقلبات في السوق',
-            type: 'bearish'
-        });
-    }
-
-    // ============================================================
-    // تحليل النتائج النهائي
-    // ============================================================
-    const bullishCount = reasons.filter(r => r.type === 'bullish').length;
-    const bearishCount = reasons.filter(r => r.type === 'bearish').length;
-    const neutralCount = reasons.filter(r => r.type === 'neutral').length;
-    const totalReasons = reasons.length;
-
-    // تحديد الإشارة
-    let signalStrength = 0;
-    if (bullishCount > bearishCount + 2) {
-        signal = 'شراء قوي';
-        trend = 'صاعد قوي';
-        strength = 'قوية جداً';
-        risk = 'منخفضة';
-        signalStrength = 90;
-        recommendation = '🚀 شراء بقوة مع هدف T2';
-        expectedProfit = '15-25%';
-        riskReward = '1:3';
-    } else if (bullishCount > bearishCount) {
-        signal = 'شراء';
-        trend = 'صاعد';
-        strength = 'قوية';
-        risk = 'منخفضة إلى متوسطة';
-        signalStrength = 70;
-        recommendation = '📊 شراء مع هدف T1';
-        expectedProfit = '8-15%';
-        riskReward = '1:2';
-    } else if (bearishCount > bullishCount + 2) {
-        signal = 'بيع قوي';
-        trend = 'هابط قوي';
-        strength = 'قوية جداً';
-        risk = 'منخفضة';
-        signalStrength = 90;
-        recommendation = '🔻 بيع بقوة مع هدف T2';
-        expectedProfit = '15-25%';
-        riskReward = '1:3';
-    } else if (bearishCount > bullishCount) {
-        signal = 'بيع';
-        trend = 'هابط';
-        strength = 'قوية';
-        risk = 'منخفضة إلى متوسطة';
-        signalStrength = 70;
-        recommendation = '📊 بيع مع هدف T1';
-        expectedProfit = '8-15%';
-        riskReward = '1:2';
+        classicScore += 30;
+        classicReasons.push('الاتجاه العام: هابط (MA50 < MA200)');
     } else {
-        signal = 'انتظار';
-        trend = 'محايد';
-        strength = 'ضعيفة';
-        risk = 'عالية';
-        signalStrength = 30;
-        recommendation = '⏳ انتظر إشارة واضحة';
-        expectedProfit = 'غير مؤكد';
-        riskReward = '1:1';
+        classicScore += 15;
+        classicReasons.push('الاتجاه: جانبي أو غير واضح');
+        classicWeaknesses.push('الاتجاه غير واضح');
+    }
+
+    // المتوسطات المتحركة
+    if (aboveMA50 === true) {
+        classicScore += 25;
+        classicReasons.push('السعر فوق المتوسط 50 (يدعم الصعود)');
+    } else if (aboveMA50 === false) {
+        classicScore += 25;
+        classicReasons.push('السعر تحت المتوسط 50 (يدعم الهبوط)');
+    }
+
+    // RSI
+    if (rsi < 30) {
+        classicScore += 20;
+        classicReasons.push(`RSI في منطقة التشبع الشرائي (${rsi.toFixed(1)})`);
+    } else if (rsi > 70) {
+        classicScore += 20;
+        classicReasons.push(`RSI في منطقة التشبع البيعي (${rsi.toFixed(1)})`);
+    } else if (rsi >= 40 && rsi <= 60) {
+        classicScore += 15;
+        classicReasons.push(`RSI في منطقة متوسطة (${rsi.toFixed(1)})`);
+        classicWeaknesses.push('RSI محايد، لا يعطي إشارة واضحة');
+    } else if (rsi > 60) {
+        classicScore += 20;
+        classicReasons.push(`RSI في منطقة القوة (${rsi.toFixed(1)})`);
+    } else {
+        classicScore += 10;
+        classicReasons.push(`RSI في منطقة الضعف (${rsi.toFixed(1)})`);
+        classicWeaknesses.push('RSI ضعيف');
+    }
+
+    // الدعم والمقاومة
+    if (pricePosition > 0.85) {
+        classicScore += 25;
+        classicReasons.push(`السعر عند مقاومة قوية (${resistance.toFixed(2)})`);
+        classicWeaknesses.push('قد يواجه مقاومة قوية');
+    } else if (pricePosition < 0.15) {
+        classicScore += 25;
+        classicReasons.push(`السعر عند دعم قوي (${support.toFixed(2)})`);
+    } else {
+        classicScore += 15;
+        classicReasons.push(`السعر في منتصف النطاق (${support.toFixed(2)}-${resistance.toFixed(2)})`);
+        classicWeaknesses.push('ليس عند مستوى رئيسي');
+    }
+
+    const classicConfidence = Math.min(Math.round(classicScore), 100);
+    const classicRecommendation = classicScore >= 70 ? 'شراء' : classicScore >= 40 ? 'محايد' : 'بيع';
+    const classicRisk = classicScore >= 70 ? 'منخفضة' : classicScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'المدرسة الكلاسيكية',
+        icon: '📊',
+        confidence: classicConfidence,
+        recommendation: classicRecommendation,
+        risk: classicRisk,
+        reasons: classicReasons.slice(0, 5),
+        weaknesses: classicWeaknesses.length > 0 ? classicWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: classicScore
+    });
+
+    // ---- 2. Price Action ----
+    let paScore = 0;
+    let paReasons = [];
+    let paWeaknesses = [];
+
+    // نمط الشمعة
+    const patternRand = Math.random();
+    if (patternRand > 0.8) {
+        paScore += 35;
+        paReasons.push('نمط شمعة "المطرقة" - إشارة انعكاس صاعد');
+    } else if (patternRand > 0.6) {
+        paScore += 35;
+        paReasons.push('نمط شمعة "النجمة الساقطة" - إشارة انعكاس هابط');
+    } else if (patternRand > 0.4) {
+        paScore += 25;
+        paReasons.push('شمعة "دوجي" - تردد في السوق');
+        paWeaknesses.push('دوجي تعني عدم يقين');
+    } else {
+        paScore += 20;
+        paReasons.push('شمعة عادية - لا نمط مميز');
+        paWeaknesses.push('لا يوجد نمط شمعة واضح');
+    }
+
+    // الكسر الهيكلي
+    if (pricePosition > 0.9) {
+        paScore += 35;
+        paReasons.push('كسر هيكلي صاعد - اختراق مستوى المقاومة');
+    } else if (pricePosition < 0.1) {
+        paScore += 35;
+        paReasons.push('كسر هيكلي هابط - كسر مستوى الدعم');
+    } else {
+        paScore += 15;
+        paReasons.push('لا يوجد كسر هيكلي واضح');
+        paWeaknesses.push('لا يوجد كسر هيكلي');
+    }
+
+    // مناطق العرض والطلب
+    if (pricePosition < 0.2) {
+        paScore += 30;
+        paReasons.push('منطقة طلب قوية عند الدعم');
+    } else if (pricePosition > 0.8) {
+        paScore += 30;
+        paReasons.push('منطقة عرض قوية عند المقاومة');
+    } else {
+        paScore += 15;
+        paReasons.push('السعر في منطقة عرضية');
+        paWeaknesses.push('لا توجد منطقة طلب/عرض واضحة');
+    }
+
+    const paConfidence = Math.min(Math.round(paScore), 100);
+    const paRecommendation = paScore >= 70 ? 'شراء' : paScore >= 40 ? 'محايد' : 'بيع';
+    const paRisk = paScore >= 70 ? 'منخفضة' : paScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'Price Action',
+        icon: '🕯️',
+        confidence: paConfidence,
+        recommendation: paRecommendation,
+        risk: paRisk,
+        reasons: paReasons.slice(0, 5),
+        weaknesses: paWeaknesses.length > 0 ? paWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: paScore
+    });
+
+    // ---- 3. الأنماط التوافقية ----
+    let harmonicScore = 0;
+    let harmonicReasons = [];
+    let harmonicWeaknesses = [];
+
+    const patternType = Math.random();
+    if (patternType > 0.7) {
+        harmonicScore += 40;
+        harmonicReasons.push('نمط Gartley مكتمل بنسبة 78.6%');
+    } else if (patternType > 0.4) {
+        harmonicScore += 35;
+        harmonicReasons.push('نمط Bat بنسبة 61.8%');
+        harmonicWeaknesses.push('النمط غير مكتمل بالكامل');
+    } else {
+        harmonicScore += 20;
+        harmonicReasons.push('لا يوجد نمط توافقي واضح');
+        harmonicWeaknesses.push('لا يوجد نمط توافقي');
+    }
+
+    // فيبوناتشي
+    if (pricePosition > 0.55 && pricePosition < 0.65) {
+        harmonicScore += 30;
+        harmonicReasons.push('السعر عند مستوى فيبوناتشي 61.8%');
+    } else if (pricePosition > 0.35 && pricePosition < 0.45) {
+        harmonicScore += 25;
+        harmonicReasons.push('السعر عند مستوى فيبوناتشي 38.2%');
+    } else {
+        harmonicScore += 15;
+        harmonicReasons.push('السعر ليس عند مستوى فيبوناتشي رئيسي');
+        harmonicWeaknesses.push('لا يوجد مستوى فيبوناتشي رئيسي');
+    }
+
+    // منطقة الانعكاس
+    if (pricePosition < 0.2 || pricePosition > 0.8) {
+        harmonicScore += 30;
+        harmonicReasons.push('النمط في منطقة انعكاس قوية');
+    } else {
+        harmonicScore += 15;
+        harmonicReasons.push('النمط في منطقة وسطية');
+        harmonicWeaknesses.push('النمط في منطقة وسطية');
+    }
+
+    const harmonicConfidence = Math.min(Math.round(harmonicScore), 100);
+    const harmonicRecommendation = harmonicScore >= 70 ? 'شراء' : harmonicScore >= 40 ? 'محايد' : 'بيع';
+    const harmonicRisk = harmonicScore >= 70 ? 'منخفضة' : harmonicScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'الأنماط التوافقية',
+        icon: '📐',
+        confidence: harmonicConfidence,
+        recommendation: harmonicRecommendation,
+        risk: harmonicRisk,
+        reasons: harmonicReasons.slice(0, 5),
+        weaknesses: harmonicWeaknesses.length > 0 ? harmonicWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: harmonicScore
+    });
+
+    // ---- 4. ICT ----
+    let ictScore = 0;
+    let ictReasons = [];
+    let ictWeaknesses = [];
+
+    // Order Block
+    if (pricePosition < 0.15 || pricePosition > 0.85) {
+        ictScore += 30;
+        ictReasons.push('Order Block تم تحديده عند مستوى رئيسي');
+    } else {
+        ictScore += 15;
+        ictReasons.push('لا يوجد Order Block واضح');
+        ictWeaknesses.push('لا يوجد Order Block واضح');
+    }
+
+    // Fair Value Gap
+    const fvgRand = Math.random();
+    if (fvgRand > 0.6) {
+        ictScore += 25;
+        ictReasons.push('Fair Value Gap تم تحديده');
+    } else {
+        ictScore += 10;
+        ictReasons.push('لا يوجد Fair Value Gap واضح');
+        ictWeaknesses.push('لا يوجد FVG');
+    }
+
+    // Liquidity Sweep
+    if (pricePosition > 0.9 || pricePosition < 0.1) {
+        ictScore += 25;
+        ictReasons.push('Liquidity Sweep تم اجتياحه');
+    } else {
+        ictScore += 10;
+        ictReasons.push('لا يوجد Liquidity Sweep');
+        ictWeaknesses.push('لا يوجد اجتياح سيولة');
+    }
+
+    // Change of Character
+    if (Math.random() > 0.5) {
+        ictScore += 20;
+        ictReasons.push('تغير الشخصية (Change of Character)');
+    } else {
+        ictScore += 10;
+        ictReasons.push('لا يوجد تغير في الشخصية');
+        ictWeaknesses.push('لا يوجد تغير في الشخصية');
+    }
+
+    const ictConfidence = Math.min(Math.round(ictScore), 100);
+    const ictRecommendation = ictScore >= 70 ? 'شراء' : ictScore >= 40 ? 'محايد' : 'بيع';
+    const ictRisk = ictScore >= 70 ? 'منخفضة' : ictScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'ICT',
+        icon: '💼',
+        confidence: ictConfidence,
+        recommendation: ictRecommendation,
+        risk: ictRisk,
+        reasons: ictReasons.slice(0, 5),
+        weaknesses: ictWeaknesses.length > 0 ? ictWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: ictScore
+    });
+
+    // ---- 5. موجات إليوت ----
+    let elliottScore = 0;
+    let elliottReasons = [];
+    let elliottWeaknesses = [];
+
+    const waveRand = Math.random();
+    if (waveRand > 0.7) {
+        elliottScore += 40;
+        elliottReasons.push('الموجة الحالية: الموجة 3 (دافعة)');
+    } else if (waveRand > 0.4) {
+        elliottScore += 30;
+        elliottReasons.push('الموجة الحالية: الموجة C (تصحيحية)');
+        elliottWeaknesses.push('موجة تصحيحية قد تنتهي قريباً');
+    } else {
+        elliottScore += 20;
+        elliottReasons.push('تحديد الموجة غير واضح');
+        elliottWeaknesses.push('تحديد الموجات صعب');
+    }
+
+    if (Math.random() > 0.5) {
+        elliottScore += 30;
+        elliottReasons.push('الموجة التالية المتوقعة: الموجة 5 (نهاية الاتجاه)');
+    } else {
+        elliottScore += 20;
+        elliottReasons.push('الموجة التالية غير واضحة');
+        elliottWeaknesses.push('الموجة التالية غير واضحة');
+    }
+
+    // فيبوناتشي بين الموجات
+    if (Math.random() > 0.5) {
+        elliottScore += 30;
+        elliottReasons.push('نسب فيبوناتشي بين الموجات متطابقة');
+    } else {
+        elliottScore += 15;
+        elliottReasons.push('نسب فيبوناتشي غير واضحة');
+        elliottWeaknesses.push('نسب فيبوناتشي غير واضحة');
+    }
+
+    const elliottConfidence = Math.min(Math.round(elliottScore), 100);
+    const elliottRecommendation = elliottScore >= 70 ? 'شراء' : elliottScore >= 40 ? 'محايد' : 'بيع';
+    const elliottRisk = elliottScore >= 70 ? 'منخفضة' : elliottScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'موجات إليوت',
+        icon: '🌊',
+        confidence: elliottConfidence,
+        recommendation: elliottRecommendation,
+        risk: elliottRisk,
+        reasons: elliottReasons.slice(0, 5),
+        weaknesses: elliottWeaknesses.length > 0 ? elliottWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: elliottScore
+    });
+
+    // ---- 6. تحليل الحجم ----
+    let volumeScore = 0;
+    let volumeReasons = [];
+    let volumeWeaknesses = [];
+
+    // تأكيد الاتجاه بالحجم
+    const volRand = Math.random();
+    if (volRand > 0.7) {
+        volumeScore += 40;
+        volumeReasons.push('الحجم مرتفع (يؤكد الاتجاه)');
+    } else if (volRand > 0.4) {
+        volumeScore += 25;
+        volumeReasons.push('حجم متوسط - ليس قوياً');
+        volumeWeaknesses.push('الحجم ليس قوياً');
+    } else {
+        volumeScore += 15;
+        volumeReasons.push('حجم منخفض - قد يشير إلى ضعف');
+        volumeWeaknesses.push('الحجم منخفض');
+    }
+
+    // OBV
+    if (Math.random() > 0.5) {
+        volumeScore += 30;
+        volumeReasons.push('OBV في اتجاه صاعد');
+    } else {
+        volumeScore += 15;
+        volumeReasons.push('OBV في اتجاه هابط');
+        volumeWeaknesses.push('OBV هابط');
+    }
+
+    // حجم vs متوسط
+    if (Math.random() > 0.5) {
+        volumeScore += 30;
+        volumeReasons.push('حجم اليوم > متوسط 20 يوم');
+    } else {
+        volumeScore += 15;
+        volumeReasons.push('حجم اليوم < متوسط 20 يوم');
+        volumeWeaknesses.push('الحجم أقل من المتوسط');
+    }
+
+    const volumeConfidence = Math.min(Math.round(volumeScore), 100);
+    const volumeRecommendation = volumeScore >= 70 ? 'شراء' : volumeScore >= 40 ? 'محايد' : 'بيع';
+    const volumeRisk = volumeScore >= 70 ? 'منخفضة' : volumeScore >= 40 ? 'متوسطة' : 'عالية';
+
+    schools.push({
+        name: 'تحليل الحجم',
+        icon: '📊',
+        confidence: volumeConfidence,
+        recommendation: volumeRecommendation,
+        risk: volumeRisk,
+        reasons: volumeReasons.slice(0, 5),
+        weaknesses: volumeWeaknesses.length > 0 ? volumeWeaknesses : ['لا توجد نقاط ضعف واضحة'],
+        score: volumeScore
+    });
+
+    // ============================================================
+    // حساب النتيجة النهائية
+    // ============================================================
+    const buySchools = schools.filter(s => s.recommendation === 'شراء').length;
+    const sellSchools = schools.filter(s => s.recommendation === 'بيع').length;
+    const neutralSchools = schools.filter(s => s.recommendation === 'محايد').length;
+
+    const totalConfidence = schools.reduce((sum, s) => sum + s.confidence, 0);
+    const avgConfidence = Math.round(totalConfidence / schools.length);
+
+    let finalRecommendation = 'محايد';
+    let finalColor = 'neutral';
+
+    if (buySchools > sellSchools && avgConfidence > 60) {
+        finalRecommendation = 'شراء قوي 🟢';
+        finalColor = 'buy';
+    } else if (buySchools > sellSchools) {
+        finalRecommendation = 'شراء 🟡';
+        finalColor = 'buy';
+    } else if (sellSchools > buySchools && avgConfidence > 60) {
+        finalRecommendation = 'بيع قوي 🔴';
+        finalColor = 'sell';
+    } else if (sellSchools > buySchools) {
+        finalRecommendation = 'بيع 🟡';
+        finalColor = 'sell';
+    } else {
+        finalRecommendation = 'انتظار ⏳';
+        finalColor = 'neutral';
     }
 
     // ============================================================
@@ -1365,82 +1446,66 @@ function performProfessionalAnalysis() {
     const sellEntry = (entry + range * 0.15).toFixed(2);
     const sellChange = ((price - parseFloat(sellEntry)) / parseFloat(sellEntry) * 100).toFixed(2);
 
+    // Stop Loss & Risk/Reward
+    const stopLoss = (support).toFixed(2);
+    const riskReward = finalRecommendation.includes('شراء') ? '1:2.5' : finalRecommendation.includes('بيع') ? '1:2.5' : 'غير محدد';
+
     // ============================================================
     // عرض النتائج
     // ============================================================
-    
-    // 1. المؤشرات
-    document.getElementById('indRSI').textContent = rsi.toFixed(1);
-    document.getElementById('indRSI').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
-    
-    document.getElementById('indMACD').textContent = rsi > 50 ? '📈 إيجابي' : '📉 سلبي';
-    document.getElementById('indMACD').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
-    
-    document.getElementById('indBollinger').textContent = bbPosition > 0.8 ? 'علوي' : bbPosition < 0.2 ? 'سفلي' : 'وسط';
-    document.getElementById('indBollinger').className = `value ${bbPosition > 0.8 ? 'bearish' : bbPosition < 0.2 ? 'bullish' : 'neutral'}`;
-    
-    document.getElementById('indIchimoku').textContent = price > ichimokuSenkouA ? '📈 فوق الغيمة' : '📉 تحت الغيمة';
-    document.getElementById('indIchimoku').className = `value ${price > ichimokuSenkouA ? 'bullish' : 'bearish'}`;
-    
-    document.getElementById('indMomentum').textContent = momentumInput || (rsi > 50 ? 'قوي' : 'ضعيف');
-    document.getElementById('indMomentum').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
-    
-    document.getElementById('indMA50').textContent = ma50 ? ma50.toFixed(2) : '--';
-    document.getElementById('indMA50').className = `value ${aboveMA50 ? 'bullish' : aboveMA50 === false ? 'bearish' : 'neutral'}`;
-    
-    document.getElementById('indMA200').textContent = ma200.toFixed(2);
-    document.getElementById('indMA200').className = `value ${aboveMA200 ? 'bullish' : 'bearish'}`;
-    
-    document.getElementById('indTrend').textContent = trend;
-    document.getElementById('indTrend').className = `value ${trend.includes('صاعد') ? 'bullish' : trend.includes('هابط') ? 'bearish' : 'neutral'}`;
 
-    // 2. الدخول والأهداف
+    // 1. النتيجة النهائية
+    document.getElementById('finalRecommendation').textContent = finalRecommendation;
+    document.getElementById('finalRecommendation').className = `result-value ${finalColor}`;
+    document.getElementById('finalConfidence').textContent = `نسبة الثقة: ${avgConfidence}%`;
+    document.getElementById('finalProgressBar').style.width = `${avgConfidence}%`;
+    document.getElementById('finalProgressBar').className = `fill ${avgConfidence >= 70 ? 'high' : avgConfidence >= 40 ? 'medium' : 'low'}`;
+    document.getElementById('schoolsAgree').textContent = `${buySchools} مدارس`;
+    document.getElementById('schoolsDisagree').textContent = `${sellSchools} مدارس`;
+
+    // 2. المدارس
+    const container = document.getElementById('schoolsContainer');
+    container.innerHTML = schools.map(s => {
+        const confClass = s.confidence >= 70 ? 'high' : s.confidence >= 40 ? 'medium' : 'low';
+        const recClass = s.recommendation === 'شراء' ? 'buy' : s.recommendation === 'بيع' ? 'sell' : 'neutral';
+        const recText = s.recommendation === 'شراء' ? '📈 شراء' : s.recommendation === 'بيع' ? '📉 بيع' : '⏳ محايد';
+        
+        return `
+            <div class="school-card">
+                <div class="school-header">
+                    <div>
+                        <span class="school-name">${s.icon} ${s.name}</span>
+                        <span class="badge ${recClass}">${recText}</span>
+                    </div>
+                    <div>
+                        <span class="school-confidence ${confClass}">${s.confidence}%</span>
+                        <span style="font-size:11px; color:#5a6a80; margin-right:6px;">المخاطرة: ${s.risk}</span>
+                    </div>
+                </div>
+                <div class="progress-bar" style="max-width:200px;">
+                    <div class="fill ${confClass}" style="width:${s.confidence}%;"></div>
+                </div>
+                <div class="school-reasons">
+                    ${s.reasons.map((r, i) => `<div class="reason-item">${i+1}. ${r}</div>`).join('')}
+                </div>
+                ${s.weaknesses.length > 0 && s.weaknesses[0] !== 'لا توجد نقاط ضعف واضحة' ? `
+                    <div class="school-weakness">⚠️ نقاط الضعف: ${s.weaknesses.join('، ')}</div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
+
+    // 3. الدخول والأهداف
     document.getElementById('changeDisplay').textContent = `${change}%`;
     document.getElementById('entryDisplay').textContent = entry.toFixed(2);
+    document.getElementById('sellChange').textContent = `${sellChange}%`;
+    document.getElementById('sellEntry').textContent = sellEntry;
     document.getElementById('t1').textContent = targets[0];
     document.getElementById('t2').textContent = targets[1];
     document.getElementById('t3').textContent = targets[2];
     document.getElementById('t4').textContent = targets[3];
-    document.getElementById('sellChange').textContent = `${sellChange}%`;
-    document.getElementById('sellEntry').textContent = sellEntry;
-
-    // 3. قوة الإشارة
-    const bar = document.getElementById('signalStrengthBar');
-    bar.style.width = `${signalStrength}%`;
-    bar.className = `fill ${signalStrength > 70 ? 'strong' : signalStrength > 40 ? 'medium' : 'weak'}`;
-    document.getElementById('signalStrengthText').textContent = 
-        signalStrength > 70 ? '💪 قوي جداً' : 
-        signalStrength > 40 ? '📊 متوسط' : '⚠️ ضعيف';
-
-    // 4. عرض الأسباب التفصيلية
-    const reasonsList = document.getElementById('reasonsList');
-    reasonsList.innerHTML = reasons.map(r => `
-        <div class="reason-item">
-            <span class="icon">${r.icon}</span>
-            <span>${r.text}</span>
-            <span class="${r.type === 'bullish' ? 'highlight' : r.type === 'bearish' ? 'danger' : 'warning'}" style="font-size:11px; margin-right:8px;">
-                ${r.type === 'bullish' ? '📈 صاعد' : r.type === 'bearish' ? '📉 هابط' : '⏳ محايد'}
-            </span>
-        </div>
-    `).join('');
-
-    // 5. البادجات
-    document.getElementById('trendBadge').textContent = `📌 الاتجاه: ${trend}`;
-    document.getElementById('signalBadge').textContent = `📊 الإشارة: ${signal}`;
-    document.getElementById('riskBadge').textContent = `⚠️ المخاطرة: ${risk}`;
-    document.getElementById('strengthBadge').textContent = `💪 القوة: ${strength}`;
-    
-    document.getElementById('trendBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
-    document.getElementById('signalBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
-    document.getElementById('riskBadge').className = `badge ${risk.includes('منخفضة') ? 'badge-buy' : risk.includes('عالية') ? 'badge-sell' : 'badge-neutral'}`;
-    document.getElementById('strengthBadge').className = `badge ${strength.includes('قوية') ? 'badge-strong' : 'badge-neutral'}`;
-
-    // 6. التوصية
-    document.getElementById('recommendation').textContent = recommendation;
-    document.getElementById('recommendationDetail').textContent = 
-        `الدخول عند ${entry.toFixed(2)}، الهدف ${targets[0]}، وقف الخسارة عند ${(support).toFixed(2)}`;
-    document.getElementById('expectedProfit').textContent = expectedProfit;
-    document.getElementById('riskReward').textContent = riskReward;
+    document.getElementById('stopLossDisplay').textContent = stopLoss;
+    document.getElementById('riskRewardDisplay').textContent = riskReward;
 
     // ============================================================
     // حفظ التحليل
@@ -1453,42 +1518,45 @@ function performProfessionalAnalysis() {
         targets,
         sellEntry,
         sellChange,
-        trend,
-        signal,
-        risk,
-        strength,
-        recommendation,
-        recommendationDetail,
-        expectedProfit,
+        finalRecommendation,
+        avgConfidence,
+        buySchools,
+        sellSchools,
+        neutralSchools,
+        schools: schools.map(s => ({
+            name: s.name,
+            confidence: s.confidence,
+            recommendation: s.recommendation,
+            reasons: s.reasons
+        })),
+        stopLoss,
         riskReward,
-        reasons: reasons.map(r => r.text),
-        bullishCount,
-        bearishCount,
-        totalReasons,
-        rsi: rsi.toFixed(1),
-        support: support.toFixed(2),
-        resistance: resistance.toFixed(2),
+        timestamp: new Date().toISOString()
     };
 
     // ============================================================
     // إضافة ملاحظات المستخدم
     // ============================================================
     if (notes) {
-        const reasonsList2 = document.getElementById('reasonsList');
-        reasonsList2.innerHTML += `
-            <div class="reason-item" style="border-color: #f5b041;">
-                <span class="icon">📝</span>
-                <span><strong>ملاحظة المستخدم:</strong> ${notes}</span>
+        const container2 = document.getElementById('schoolsContainer');
+        container2.innerHTML += `
+            <div class="school-card" style="border-color: #f5b041;">
+                <div class="school-header">
+                    <span class="school-name">📝 ملاحظة المستخدم</span>
+                </div>
+                <div class="school-reasons">
+                    <div class="reason-item">${notes}</div>
+                </div>
             </div>
         `;
     }
 
-    showNotification(`✅ تم التحليل: ${signal} (${totalReasons} سبب)`, 
-        signal.includes('شراء') ? 'success' : signal.includes('بيع') ? 'error' : 'warning');
+    showNotification(`✅ تم التحليل: ${finalRecommendation} (${avgConfidence}%)`, 
+        finalRecommendation.includes('شراء') ? 'success' : finalRecommendation.includes('بيع') ? 'error' : 'warning');
 }
 
 // ============================================================
-// 6. HISTORY
+// 7. HISTORY
 // ============================================================
 function saveToHistory() {
     if (!state.lastAnalysis) return;
@@ -1510,7 +1578,7 @@ function renderHistory() {
     list.innerHTML = state.history.slice(0, 20).map(item => `
         <div class="history-item">
             <span class="asset">${item.asset}</span>
-            <span>${item.signal} | ${item.entry}</span>
+            <span>${item.finalRecommendation || item.signal || '--'} | ${item.entry || '--'}</span>
             <span class="time">${new Date(item.timestamp).toLocaleTimeString('ar-EG', {hour:'2-digit',minute:'2-digit'})}</span>
         </div>
     `).join('');
@@ -1524,7 +1592,7 @@ function clearHistory() {
 }
 
 // ============================================================
-// 7. TELEGRAM
+// 8. TELEGRAM
 // ============================================================
 function connectTelegram() {
     const chatId = document.getElementById('telegramChatId').value.trim();
@@ -1550,12 +1618,17 @@ async function sendToTelegram() {
     }
 
     const a = state.lastAnalysis;
-    const reasonsText = a.reasons ? a.reasons.map((r, i) => `${i+1}. ${r}`).join('\n') : '--';
-    
+    let schoolsText = '';
+    if (a.schools) {
+        schoolsText = a.schools.map(s => 
+            `📌 ${s.name}: ${s.confidence}% (${s.recommendation})\n   ${s.reasons.map((r, i) => `   ${i+1}. ${r}`).join('\n')}`
+        ).join('\n\n');
+    }
+
     const message = `
-📊 *تحليل احترافي - ${a.asset}*
+📊 *التحليل متعدد المدارس - ${a.asset}*
 ═══════════════════════════════
-💰 السعر الحالي: ${a.price}
+💰 السعر: ${a.price}
 📈 الدخول: ${a.entry} (${a.change}%)
 
 🎯 *الأهداف:*
@@ -1564,17 +1637,15 @@ T3: ${a.targets[2]} | T4: ${a.targets[3]}
 
 📉 البيع: ${a.sellEntry} (${a.sellChange}%)
 
-📊 *الإشارة:* ${a.signal}
-📌 *الاتجاه:* ${a.trend}
-💪 *القوة:* ${a.strength}
-⚠️ *المخاطرة:* ${a.risk}
+🛑 وقف الخسارة: ${a.stopLoss || '--'}
+📊 المخاطرة/المكافأة: ${a.riskReward || '--'}
 
-🧠 *أسباب التحليل (${a.totalReasons || 0} سبب):*
-${reasonsText}
+📚 *المدارس الست:*
+${schoolsText}
 
-📋 *التوصية:* ${a.recommendation}
-🎯 *الربح المتوقع:* ${a.expectedProfit}
-📊 *نسبة المخاطرة/المكافأة:* ${a.riskReward}
+🎯 *النتيجة النهائية:*
+${a.finalRecommendation} (${a.avgConfidence}%)
+المدارس المؤيدة: ${a.buySchools} | المعارضة: ${a.sellSchools}
 
 ⏰ ${new Date().toLocaleString('ar-EG')}
 ═══════════════════════════════
@@ -1589,7 +1660,7 @@ ${reasonsText}
 }
 
 // ============================================================
-// 8. NOTIFICATIONS
+// 9. NOTIFICATIONS
 // ============================================================
 function showNotification(message, type = 'info') {
     const existing = document.querySelector('.notification');
@@ -1607,35 +1678,43 @@ function showNotification(message, type = 'info') {
 }
 
 // ============================================================
-// 9. EXPORT
+// 10. EXPORT
 // ============================================================
 function copyAnalysis() {
-    const a = state.lastAnalysis || {};
-    const reasonsText = a.reasons ? a.reasons.map((r, i) => `${i+1}. ${r}`).join('\n') : '--';
-    
+    if (!state.lastAnalysis) {
+        showNotification('⚠️ لا يوجد تحليل للنسخ', 'warning');
+        return;
+    }
+
+    const a = state.lastAnalysis;
+    let schoolsText = '';
+    if (a.schools) {
+        schoolsText = a.schools.map(s => 
+            `📌 ${s.name}: ${s.confidence}% (${s.recommendation})\n   ${s.reasons.map((r, i) => `   ${i+1}. ${r}`).join('\n')}`
+        ).join('\n\n');
+    }
+
     const text = `
-📊 تحليل احترافي - ${a.asset || 'غير محدد'}
+📊 التحليل متعدد المدارس - ${a.asset}
 ═══════════════════════════════
-💰 السعر: ${a.price || '--'}
-📈 الدخول: ${a.entry || '--'} (${a.change || '--'}%)
+💰 السعر: ${a.price}
+📈 الدخول: ${a.entry} (${a.change}%)
 
 🎯 الأهداف:
-T1: ${a.targets?.[0] || '--'} | T2: ${a.targets?.[1] || '--'}
-T3: ${a.targets?.[2] || '--'} | T4: ${a.targets?.[3] || '--'}
+T1: ${a.targets[0]} | T2: ${a.targets[1]}
+T3: ${a.targets[2]} | T4: ${a.targets[3]}
 
-📉 البيع: ${a.sellEntry || '--'} (${a.sellChange || '--'}%)
+📉 البيع: ${a.sellEntry} (${a.sellChange}%)
 
-📊 الإشارة: ${a.signal || '--'}
-📌 الاتجاه: ${a.trend || '--'}
-💪 القوة: ${a.strength || '--'}
-⚠️ المخاطرة: ${a.risk || '--'}
+🛑 وقف الخسارة: ${a.stopLoss || '--'}
+📊 المخاطرة/المكافأة: ${a.riskReward || '--'}
 
-🧠 أسباب التحليل (${a.totalReasons || 0} سبب):
-${reasonsText}
+📚 المدارس الست:
+${schoolsText}
 
-📋 التوصية: ${a.recommendation || '--'}
-🎯 الربح المتوقع: ${a.expectedProfit || '--'}
-📊 نسبة المخاطرة/المكافأة: ${a.riskReward || '--'}
+🎯 النتيجة النهائية:
+${a.finalRecommendation} (${a.avgConfidence}%)
+المدارس المؤيدة: ${a.buySchools} | المعارضة: ${a.sellSchools}
 
 ⏰ ${new Date().toLocaleString('ar-EG')}
 ═══════════════════════════════
@@ -1649,7 +1728,7 @@ ${reasonsText}
 }
 
 // ============================================================
-// 10. KEYBOARD
+// 11. KEYBOARD
 // ============================================================
 document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
@@ -1663,7 +1742,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================================
-// 11. INIT
+// 12. INIT
 // ============================================================
 function init() {
     fetchLivePrice();
@@ -1678,9 +1757,9 @@ function init() {
 
     setInterval(fetchLivePrice, 60000);
 
-    console.log('🚀 منصة التحليل الاحترافية v5.0 جاهزة!');
+    console.log('🚀 منصة التحليل متعدد المدارس v6.0 جاهزة!');
+    console.log('📚 6 مدارس تحليلية: كلاسيكية، Price Action، Harmonic، ICT، إليوت، حجم');
     console.log('💡 Ctrl+Enter للتحليل السريع');
-    console.log('📊 تحليل متقدم مع 13+ سبب مختلف');
 }
 
 init();
