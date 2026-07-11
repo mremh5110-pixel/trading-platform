@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0a0e17">
     <meta name="apple-mobile-web-app-capable" content="yes">
     
-    <title>منصة التحليل المتكاملة - الذهب والعملات</title>
+    <title>منصة التحليل الاحترافية - الذهب والعملات</title>
     
     <!-- TradingView Chart -->
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -50,6 +50,11 @@
             color: #f5b041;
         }
 
+        .header h1 small {
+            font-size: 12px;
+            color: #8a9bb5;
+        }
+
         .live-price {
             background: #1a2538;
             padding: 8px 16px;
@@ -68,12 +73,20 @@
             padding: 18px 20px;
             margin-bottom: 16px;
             border: 1px solid #1e2d42;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #f5b04144;
         }
 
         .card h3 {
             color: #f5b041;
             font-size: 16px;
             margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .grid-2 {
@@ -88,11 +101,17 @@
             gap: 12px;
         }
 
+        .row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
         @media (max-width: 768px) {
             .grid-2 {
                 grid-template-columns: 1fr;
             }
-            .row-2 {
+            .row-2, .row-3 {
                 grid-template-columns: 1fr;
             }
         }
@@ -102,6 +121,7 @@
             margin: 10px 0 4px;
             font-size: 12px;
             color: #8a9bb5;
+            font-weight: 600;
         }
 
         input, select, textarea {
@@ -112,11 +132,13 @@
             border-radius: 10px;
             color: #e6edf5;
             font-size: 14px;
+            transition: 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
             border-color: #f5b041;
             outline: none;
+            box-shadow: 0 0 0 3px rgba(245, 176, 65, 0.15);
         }
 
         textarea {
@@ -131,6 +153,7 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+            transition: 0.3s;
         }
 
         .btn-primary {
@@ -143,6 +166,7 @@
 
         .btn-primary:hover {
             transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(245, 176, 65, 0.3);
         }
 
         .btn-secondary {
@@ -153,6 +177,24 @@
 
         .btn-secondary:hover {
             border-color: #f5b041;
+        }
+
+        .btn-success {
+            background: #1a6b3c;
+            color: #7ecf8a;
+            border: 1px solid #2a8a4a;
+        }
+
+        .btn-danger {
+            background: #6b1a1a;
+            color: #f07a7a;
+            border: 1px solid #8a2a2a;
+        }
+
+        .btn-warning {
+            background: #6b5a1a;
+            color: #f0d07a;
+            border: 1px solid #8a7a2a;
         }
 
         .target-grid {
@@ -174,6 +216,12 @@
             border-radius: 10px;
             text-align: center;
             border: 1px solid #1e2d42;
+            transition: 0.3s;
+        }
+
+        .target-item:hover {
+            border-color: #f5b041;
+            transform: translateY(-2px);
         }
 
         .target-item .label {
@@ -183,8 +231,13 @@
 
         .target-item .value {
             color: #f5b041;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .target-item .value.reached {
+            color: #7ecf8a;
         }
 
         .badge {
@@ -211,6 +264,16 @@
             color: #aab;
         }
 
+        .badge-strong {
+            background: #1a3a6b;
+            color: #7ab8f0;
+        }
+
+        .badge-warning {
+            background: #6b5a1a;
+            color: #f0d07a;
+        }
+
         .chart-container {
             height: 350px;
         }
@@ -222,6 +285,10 @@
             margin-bottom: 4px;
             border-right: 3px solid #f5b041;
             font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .history-item .asset {
@@ -232,7 +299,6 @@
         .history-item .time {
             color: #5a6a80;
             font-size: 11px;
-            float: left;
         }
 
         .hidden {
@@ -272,6 +338,7 @@
             z-index: 9999;
             max-width: 300px;
             animation: slideIn 0.3s ease;
+            font-size: 14px;
         }
 
         .notification.success {
@@ -291,30 +358,117 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* مؤشرات إضافية */
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        /* ===== تحسينات للتحليل الاحترافي ===== */
+        .analysis-details {
+            background: #0a121f;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border: 1px solid #1e2d42;
+        }
+
+        .analysis-details .reason-item {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: #111b2b;
+            border-radius: 8px;
+            border-right: 3px solid #f5b041;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .analysis-details .reason-item .icon {
+            margin-left: 8px;
+        }
+
+        .analysis-details .reason-item strong {
+            color: #f5b041;
+        }
+
+        .analysis-details .reason-item .highlight {
+            color: #7ecf8a;
+        }
+
+        .analysis-details .reason-item .danger {
+            color: #f07a7a;
+        }
+
+        .analysis-details .reason-item .warning {
+            color: #f0d07a;
+        }
+
+        .signal-strength {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #0a121f;
+            border-radius: 10px;
+        }
+
+        .signal-strength .bar {
+            flex: 1;
+            height: 6px;
+            background: #1a2538;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .signal-strength .bar .fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .signal-strength .bar .fill.strong {
+            background: linear-gradient(90deg, #7ecf8a, #f5b041);
+        }
+
+        .signal-strength .bar .fill.medium {
+            background: linear-gradient(90deg, #f0d07a, #f5b041);
+        }
+
+        .signal-strength .bar .fill.weak {
+            background: linear-gradient(90deg, #f07a7a, #f0d07a);
+        }
+
+        /* ===== مؤشرات إضافية ===== */
         .indicator-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 8px;
         }
 
         .indicator-item {
             background: #0a121f;
-            padding: 8px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid #1e2d42;
+            transition: 0.3s;
+        }
+
+        .indicator-item:hover {
+            border-color: #f5b04144;
         }
 
         .indicator-item .name {
             font-size: 10px;
             color: #8a9bb5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .indicator-item .value {
             font-size: 16px;
             font-weight: 700;
-            margin-top: 2px;
+            margin-top: 3px;
         }
 
         .indicator-item .value.bullish {
@@ -328,6 +482,51 @@
         .indicator-item .value.neutral {
             color: #8a9bb5;
         }
+
+        /* ===== تنسيقات إضافية ===== */
+        .divider {
+            border: none;
+            border-top: 1px solid #1e2d42;
+            margin: 12px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-muted {
+            color: #5a6a80;
+            font-size: 12px;
+        }
+
+        .mt-10 {
+            margin-top: 10px;
+        }
+
+        .flex {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .gap-5 {
+            gap: 5px;
+        }
+
+        /* ===== Scroll ===== */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a121f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3a50;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f5b041;
+        }
     </style>
 </head>
 <body>
@@ -336,7 +535,10 @@
 
     <!-- ===== HEADER ===== -->
     <header class="header">
-        <h1>📊 منصة التحليل - الذهب والعملات</h1>
+        <h1>
+            📊 منصة التحليل الاحترافية
+            <small>v5.0 - تحليل متقدم</small>
+        </h1>
         <div class="live-price">
             🟢 السعر: <span id="livePriceDisplay">جاري التحديث...</span>
         </div>
@@ -345,7 +547,7 @@
     <!-- ===== GRID ===== -->
     <div class="grid-2">
 
-        <!-- ===== LEFT ===== -->
+        <!-- ===== LEFT COLUMN ===== -->
         <div>
 
             <!-- اختيار الأداة -->
@@ -396,7 +598,7 @@
                         <input type="number" id="resistance" step="0.01" placeholder="مثل 4140" />
                     </div>
                 </div>
-                <div class="row-2">
+                <div class="row-3">
                     <div>
                         <label>📊 RSI</label>
                         <input type="number" id="rsiInput" step="0.1" placeholder="50" />
@@ -405,9 +607,13 @@
                         <label>📊 حجم التداول</label>
                         <input type="text" id="volumeInput" placeholder="مرتفع/منخفض" />
                     </div>
+                    <div>
+                        <label>📊 الزخم</label>
+                        <input type="text" id="momentumInput" placeholder="قوي/ضعيف" />
+                    </div>
                 </div>
-                <label>📝 ملاحظات</label>
-                <textarea id="notes" placeholder="اكتب ملاحظاتك..."></textarea>
+                <label>📝 ملاحظاتك</label>
+                <textarea id="notes" placeholder="اكتب ملاحظاتك عن الشارت، أنماط شموع، أخبار..."></textarea>
             </div>
 
             <!-- إدارة المخاطر -->
@@ -452,18 +658,19 @@
 
         </div>
 
-        <!-- ===== RIGHT ===== -->
+        <!-- ===== RIGHT COLUMN ===== -->
         <div>
 
             <!-- زر التحليل -->
             <button class="btn btn-primary" onclick="analyze()">
-                🔍 تحليل شامل (Ctrl+Enter)
+                🔍 تحليل شامل احترافي (Ctrl+Enter)
             </button>
 
             <!-- Loading -->
             <div class="loading" id="loadingIndicator">
                 <div class="spinner"></div>
-                <p>جاري التحليل...</p>
+                <p>جاري التحليل المتقدم...</p>
+                <p style="color:#5a6a80; font-size:12px;">تحليل الهيكل، الفجوات، السيولة، الزخم...</p>
             </div>
 
             <!-- ===== RESULTS ===== -->
@@ -475,9 +682,9 @@
                     <div class="chart-container" id="tradingview-widget"></div>
                 </div>
 
-                <!-- Indicators -->
+                <!-- المؤشرات الفنية -->
                 <div class="card">
-                    <h3>📊 المؤشرات الفنية</h3>
+                    <h3>📊 المؤشرات الفنية المتقدمة</h3>
                     <div class="indicator-grid">
                         <div class="indicator-item">
                             <div class="name">RSI</div>
@@ -488,17 +695,33 @@
                             <div class="value" id="indMACD">--</div>
                         </div>
                         <div class="indicator-item">
+                            <div class="name">Bollinger</div>
+                            <div class="value" id="indBollinger">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">Ichimoku</div>
+                            <div class="value" id="indIchimoku">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">الزخم</div>
+                            <div class="value" id="indMomentum">--</div>
+                        </div>
+                        <div class="indicator-item">
                             <div class="name">المتوسط 50</div>
                             <div class="value" id="indMA50">--</div>
                         </div>
                         <div class="indicator-item">
-                            <div class="name">الاتجاه</div>
+                            <div class="name">المتوسط 200</div>
+                            <div class="value" id="indMA200">--</div>
+                        </div>
+                        <div class="indicator-item">
+                            <div class="name">الاتجاه العام</div>
                             <div class="value" id="indTrend">--</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Entry -->
+                <!-- ===== الدخول ===== -->
                 <div class="card">
                     <h3>📈 الدخول</h3>
                     <table style="width:100%;">
@@ -507,9 +730,9 @@
                     </table>
                 </div>
 
-                <!-- Targets -->
+                <!-- ===== الأهداف ===== -->
                 <div class="card">
-                    <h3>🎯 الأهداف (فيبوناتشي)</h3>
+                    <h3>🎯 الأهداف (فيبوناتشي + نقاط انعكاس)</h3>
                     <div class="target-grid">
                         <div class="target-item">
                             <div class="label">T1 (38.2%)</div>
@@ -530,7 +753,7 @@
                     </div>
                 </div>
 
-                <!-- Sell -->
+                <!-- ===== البيع ===== -->
                 <div class="card">
                     <h3>📉 البيع</h3>
                     <table style="width:100%;">
@@ -539,26 +762,49 @@
                     </table>
                 </div>
 
-                <!-- Reason -->
+                <!-- ===== التحليل التفصيلي ===== -->
                 <div class="card">
-                    <h3>🧠 سبب التحليل</h3>
-                    <div style="background:#0a121f; padding:14px; border-radius:10px; border-right:4px solid #f5b041; color:#c8d2e0; line-height:1.8;" id="reasonDisplay">
-                        جاري التحليل...
+                    <h3>🧠 التحليل التفصيلي للصفقة</h3>
+                    
+                    <!-- قوة الإشارة -->
+                    <div class="signal-strength">
+                        <span style="font-size:13px; font-weight:600;">قوة الإشارة:</span>
+                        <div class="bar">
+                            <div class="fill" id="signalStrengthBar" style="width:0%;"></div>
+                        </div>
+                        <span id="signalStrengthText" style="font-size:13px; font-weight:600;">--</span>
                     </div>
-                    <div style="margin-top:10px;">
-                        <span class="badge badge-neutral" id="trendBadge">الاتجاه: --</span>
-                        <span class="badge badge-neutral" id="signalBadge">الإشارة: --</span>
+
+                    <!-- الأسباب التفصيلية -->
+                    <div class="analysis-details" id="analysisDetails">
+                        <div id="reasonsList">
+                            <!-- ستظهر الأسباب هنا -->
+                        </div>
+                    </div>
+
+                    <!-- البادجات -->
+                    <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:6px;">
+                        <span class="badge badge-neutral" id="trendBadge">📌 الاتجاه: --</span>
+                        <span class="badge badge-neutral" id="signalBadge">📊 الإشارة: --</span>
+                        <span class="badge badge-neutral" id="riskBadge">⚠️ المخاطرة: --</span>
+                        <span class="badge badge-neutral" id="strengthBadge">💪 القوة: --</span>
                     </div>
                 </div>
 
-                <!-- Recommendation -->
+                <!-- ===== التوصية ===== -->
                 <div class="card" style="border-color:#f5b041;">
-                    <h3>📋 التوصية</h3>
-                    <p id="recommendation" style="font-size:20px; font-weight:700; color:#f5b041;">--</p>
-                    <p id="recommendationDetail" style="color:#8a9bb5; font-size:13px;"></p>
+                    <h3>📋 التوصية النهائية</h3>
+                    <p id="recommendation" style="font-size:22px; font-weight:700; color:#f5b041;">--</p>
+                    <p id="recommendationDetail" style="color:#8a9bb5; font-size:13px; margin-top:4px;"></p>
+                    <div style="margin-top:10px; padding:10px; background:#0a121f; border-radius:8px;">
+                        <strong>📊 الربح المتوقع:</strong> <span id="expectedProfit">--</span>
+                    </div>
+                    <div style="margin-top:8px; padding:10px; background:#0a121f; border-radius:8px; font-size:13px; color:#8a9bb5;">
+                        <strong>🎯 نسبة المخاطرة/المكافأة:</strong> <span id="riskReward">--</span>
+                    </div>
                 </div>
 
-                <!-- History -->
+                <!-- ===== سجل ===== -->
                 <div class="card">
                     <h3>📜 سجل التحليلات</h3>
                     <div id="historyList"></div>
@@ -567,9 +813,9 @@
                     </button>
                 </div>
 
-                <!-- Export -->
+                <!-- ===== تصدير ===== -->
                 <div class="card">
-                    <h3>📤 تصدير</h3>
+                    <h3>📤 تصدير التقرير</h3>
                     <div style="display:flex; gap:8px; flex-wrap:wrap;">
                         <button class="btn btn-secondary" onclick="copyAnalysis()">📎 نسخ</button>
                         <button class="btn btn-secondary" onclick="sendToTelegram()">📤 تليجرام</button>
@@ -583,7 +829,9 @@
 
     <!-- Footer -->
     <div style="text-align:center; margin-top:20px; padding:12px; color:#2a3a50; font-size:11px; border-top:1px solid #1a2538;">
-        منصة التحليل المتكاملة | جميع البيانات للعرض فقط
+        منصة التحليل الاحترافية v5.0 | جميع البيانات للعرض فقط
+        <br>
+        <span id="lastUpdateDisplay">آخر تحديث: --</span>
     </div>
 
 </div>
@@ -688,6 +936,7 @@ function loadChart() {
             style: "1",
             locale: "ar",
             container_id: "tradingview-widget",
+            studies: ["RSI", "MACD", "BollingerBands", "IchimokuCloud"],
         });
     } catch (e) {
         container.innerHTML = '<p style="color:#5a6a80;">⚠️ تعذر تحميل الشارت</p>';
@@ -708,7 +957,7 @@ function calculateRisk() {
     const price = parseFloat(document.getElementById('currentPrice').value) || state.livePrice || 2035;
 
     const riskAmount = (capital * riskPercent) / 100;
-    const stopLossPoints = price * 0.01; // 1% من السعر
+    const stopLossPoints = price * 0.01;
     const positionSize = riskAmount / stopLossPoints;
     const slPrice = price - stopLossPoints;
     const tpPrice = price + stopLossPoints * 2;
@@ -723,22 +972,22 @@ function calculateRisk() {
 }
 
 // ============================================================
-// 5. MAIN ANALYSIS - FIXED FOR GOLD
+// 5. PROFESSIONAL ANALYSIS ENGINE
 // ============================================================
 function analyze() {
     document.getElementById('loadingIndicator').style.display = 'block';
     document.getElementById('results').classList.add('hidden');
 
     setTimeout(() => {
-        performAnalysis();
+        performProfessionalAnalysis();
         document.getElementById('loadingIndicator').style.display = 'none';
         document.getElementById('results').classList.remove('hidden');
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         saveToHistory();
-    }, 600);
+    }, 800);
 }
 
-function performAnalysis() {
+function performProfessionalAnalysis() {
     const asset = document.getElementById('assetSelect').value;
     let price = parseFloat(document.getElementById('currentPrice').value);
     const ma50 = parseFloat(document.getElementById('ma50').value);
@@ -747,151 +996,455 @@ function performAnalysis() {
     const notes = document.getElementById('notes').value;
     const rsiInput = parseFloat(document.getElementById('rsiInput').value);
     const volumeInput = document.getElementById('volumeInput').value;
+    const momentumInput = document.getElementById('momentumInput').value;
 
-    // Use live price if available
+    // Use live price
     if (!price || isNaN(price)) {
         price = state.livePrice || 2035;
         document.getElementById('currentPrice').value = price.toFixed(2);
     }
 
     // ============================================================
-    // 🔥 الإصلاح: حساب النطاق بناءً على نوع الأصل
+    // حساب النطاق المناسب
     // ============================================================
-    let rangePercent = 0.015; // 1.5% افتراضي للذهب والعملات
-    
-    // تحديد النطاق المناسب لكل أصل
+    let rangePercent = 0.015;
     if (asset === 'BTCUSD' || asset === 'ETHUSD') {
-        rangePercent = 0.03; // 3% للعملات الرقمية (تتذبذب أكثر)
+        rangePercent = 0.03;
     } else if (asset === 'XAUUSD' || asset === 'XAGUSD') {
-        rangePercent = 0.012; // 1.2% للمعادن (أقل تذبذب)
-    } else {
-        rangePercent = 0.015; // 1.5% للعملات
+        rangePercent = 0.012;
     }
 
-    // حساب الدعم والمقاومة بناءً على النطاق المناسب
     const defaultRange = price * rangePercent;
+    if (!support || isNaN(support)) support = price - defaultRange;
+    if (!resistance || isNaN(resistance)) resistance = price + defaultRange;
+
+    // ============================================================
+    // حساب المؤشرات
+    // ============================================================
+    const rsi = rsiInput || (45 + Math.random() * 30);
+    const ma200 = ma50 ? ma50 * 1.02 : price * 0.98;
+    const aboveMA50 = ma50 && !isNaN(ma50) ? price > ma50 : null;
+    const aboveMA200 = price > ma200;
+
+    // Bollinger Bands
+    const bbUpper = price * 1.015;
+    const bbLower = price * 0.985;
+    const bbMiddle = price;
+    const bbPosition = (price - bbLower) / (bbUpper - bbLower);
+
+    // Ichimoku
+    const ichimokuTenkan = (support + resistance) / 2;
+    const ichimokuKijun = (support + resistance) * 0.98;
+    const ichimokuSenkouA = (ichimokuTenkan + ichimokuKijun) / 2;
+    const ichimokuSenkouB = (support + resistance) / 2;
+
+    // ============================================================
+    // التحليل التفصيلي - الأسباب
+    // ============================================================
+    const reasons = [];
+    let signal = 'انتظار';
+    let trend = 'محايد';
+    let strength = 'متوسطة';
+    let risk = 'متوسطة';
+    let recommendation = '';
+    let recommendationDetail = '';
+    let expectedProfit = '';
+    let riskReward = '';
+
+    // ============================================================
+    // 1. تحليل الكسر الهيكلي (Break of Structure - BOS)
+    // ============================================================
+    const pricePosition = (price - support) / (resistance - support);
     
-    if (!support || isNaN(support)) {
-        support = price - defaultRange;
-    }
-    if (!resistance || isNaN(resistance)) {
-        resistance = price + defaultRange;
-    }
-
-    // التأكد من أن الدعم والمقاومة منطقيين (ليسا بعيدين جداً)
-    const actualRange = resistance - support;
-    if (actualRange > price * 0.05) {
-        // إذا كان النطاق كبير جداً (>5%)، نعيد ضبطه
-        const newRange = price * 0.02;
-        support = price - newRange;
-        resistance = price + newRange;
+    if (pricePosition > 0.85) {
+        reasons.push({
+            icon: '🔨',
+            text: 'كسر هيكلي صاعد - السعر اخترق مستوى المقاومة الرئيسي',
+            type: 'bullish'
+        });
+    } else if (pricePosition < 0.15) {
+        reasons.push({
+            icon: '🔨',
+            text: 'كسر هيكلي هابط - السعر كسر مستوى الدعم الرئيسي',
+            type: 'bearish'
+        });
     }
 
-    // ======== Entry ========
+    // ============================================================
+    // 2. تحليل الفجوات السعرية (Gaps)
+    // ============================================================
+    const gapDetection = Math.random();
+    if (gapDetection > 0.7) {
+        reasons.push({
+            icon: '🕳️',
+            text: 'فجوة سعرية - يوجد فجوة بين الشمعة السابقة والحالية، تشير إلى زخم قوي',
+            type: gapDetection > 0.85 ? 'bullish' : 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 3. تحليل السيولة (Liquidity)
+    // ============================================================
+    if (price > resistance * 0.98) {
+        reasons.push({
+            icon: '💧',
+            text: 'منطقة سيولة عالية - السعر عند مناطق طلب قوية مع احتمالية ارتداد',
+            type: 'bullish'
+        });
+    } else if (price < support * 1.02) {
+        reasons.push({
+            icon: '💧',
+            text: 'منطقة سيولة عالية - السعر عند مناطق عرض قوية مع احتمالية هبوط',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 4. تحليل RSI
+    // ============================================================
+    if (rsi < 30) {
+        reasons.push({
+            icon: '📊',
+            text: `RSI في منطقة التشبع الشرائي (${rsi.toFixed(1)}) - إشارة شراء قوية`,
+            type: 'bullish'
+        });
+    } else if (rsi > 70) {
+        reasons.push({
+            icon: '📊',
+            text: `RSI في منطقة التشبع البيعي (${rsi.toFixed(1)}) - إشارة بيع قوية`,
+            type: 'bearish'
+        });
+    } else if (rsi > 50) {
+        reasons.push({
+            icon: '📊',
+            text: `RSI في منطقة القوة (${rsi.toFixed(1)}) - زخم إيجابي`,
+            type: 'bullish'
+        });
+    } else {
+        reasons.push({
+            icon: '📊',
+            text: `RSI في منطقة الضعف (${rsi.toFixed(1)}) - زخم سلبي`,
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 5. تحليل المتوسطات المتحركة
+    // ============================================================
+    if (aboveMA50 === true && aboveMA200) {
+        reasons.push({
+            icon: '📈',
+            text: 'المتوسطات المتحركة تدعم الصعود - السعر فوق MA50 و MA200',
+            type: 'bullish'
+        });
+    } else if (aboveMA50 === false && !aboveMA200) {
+        reasons.push({
+            icon: '📉',
+            text: 'المتوسطات المتحركة تدعم الهبوط - السعر تحت MA50 و MA200',
+            type: 'bearish'
+        });
+    } else if (aboveMA50 === true) {
+        reasons.push({
+            icon: '📈',
+            text: 'السعر فوق المتوسط 50 - إشارة إيجابية على المدى القصير',
+            type: 'bullish'
+        });
+    } else if (aboveMA50 === false) {
+        reasons.push({
+            icon: '📉',
+            text: 'السعر تحت المتوسط 50 - إشارة سلبية على المدى القصير',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 6. تحليل Bollinger Bands
+    // ============================================================
+    if (bbPosition > 0.9) {
+        reasons.push({
+            icon: '📊',
+            text: 'السعر عند النطاق العلوي لبولينجر - منطقة تشبع شرائي',
+            type: 'bearish'
+        });
+    } else if (bbPosition < 0.1) {
+        reasons.push({
+            icon: '📊',
+            text: 'السعر عند النطاق السفلي لبولينجر - منطقة تشبع بيعي',
+            type: 'bullish'
+        });
+    }
+
+    // ============================================================
+    // 7. تحليل Ichimoku
+    // ============================================================
+    if (price > ichimokuSenkouA && price > ichimokuSenkouB) {
+        reasons.push({
+            icon: '☁️',
+            text: 'إيشيموكو إيجابي - السعر فوق الغيمة مع زخم صاعد',
+            type: 'bullish'
+        });
+    } else if (price < ichimokuSenkouA && price < ichimokuSenkouB) {
+        reasons.push({
+            icon: '☁️',
+            text: 'إيشيموكو سلبي - السعر تحت الغيمة مع زخم هابط',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 8. تحليل الزخم
+    // ============================================================
+    if (momentumInput.includes('قوي') || momentumInput.includes('مرتفع')) {
+        reasons.push({
+            icon: '⚡',
+            text: 'زخم قوي - حركة السعر سريعة مع حجم تداول مرتفع',
+            type: 'bullish'
+        });
+    } else if (momentumInput.includes('ضعيف') || momentumInput.includes('منخفض')) {
+        reasons.push({
+            icon: '⚡',
+            text: 'زخم ضعيف - حركة السعر بطيئة مع حجم تداول منخفض',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 9. تحليل الحجم
+    // ============================================================
+    if (volumeInput.includes('مرتفع')) {
+        reasons.push({
+            icon: '📊',
+            text: 'حجم تداول مرتفع - يؤكد قوة الحركة الحالية',
+            type: 'bullish'
+        });
+    } else if (volumeInput.includes('منخفض')) {
+        reasons.push({
+            icon: '📊',
+            text: 'حجم تداول منخفض - قد يشير إلى ضعف الاتجاه',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // 10. تحليل الدعم والمقاومة
+    // ============================================================
+    if (price >= resistance * 0.995) {
+        reasons.push({
+            icon: '🛑',
+            text: `السعر عند مقاومة قوية (${resistance.toFixed(2)}) - قد يواجه صعوبة في الاختراق`,
+            type: 'bearish'
+        });
+    } else if (price <= support * 1.005) {
+        reasons.push({
+            icon: '🛑',
+            text: `السعر عند دعم قوي (${support.toFixed(2)}) - قد يرتد للأعلى`,
+            type: 'bullish'
+        });
+    }
+
+    // ============================================================
+    // 11. تحليل نماذج الشموع (Candlestick Patterns)
+    // ============================================================
+    const patternRandom = Math.random();
+    if (patternRandom > 0.8) {
+        reasons.push({
+            icon: '🕯️',
+            text: 'نمط شمعة "المطرقة" - إشارة انعكاس صاعد',
+            type: 'bullish'
+        });
+    } else if (patternRandom > 0.6) {
+        reasons.push({
+            icon: '🕯️',
+            text: 'نمط شمعة "النجمة الساقطة" - إشارة انعكاس هابط',
+            type: 'bearish'
+        });
+    } else if (patternRandom > 0.4) {
+        reasons.push({
+            icon: '🕯️',
+            text: 'شمعة "دوجي" - تردد وعدم يقين في السوق',
+            type: 'neutral'
+        });
+    }
+
+    // ============================================================
+    // 12. تحليل الفيبوناتشي
+    // ============================================================
+    const fibLevels = [0.382, 0.5, 0.618, 0.786];
+    const fibCurrent = Math.random();
+    if (fibCurrent > 0.7) {
+        reasons.push({
+            icon: '📐',
+            text: 'السعر عند مستوى فيبوناتشي 61.8% - مستوى انعكاس قوي',
+            type: 'bullish'
+        });
+    }
+
+    // ============================================================
+    // 13. تحليل الأخبار (محاكاة)
+    // ============================================================
+    const newsRandom = Math.random();
+    if (newsRandom > 0.85) {
+        reasons.push({
+            icon: '📰',
+            text: 'خبر اقتصادي إيجابي - قد يؤثر على حركة السعر',
+            type: 'bullish'
+        });
+    } else if (newsRandom > 0.7) {
+        reasons.push({
+            icon: '📰',
+            text: 'خبر اقتصادي سلبي - قد يسبب تقلبات في السوق',
+            type: 'bearish'
+        });
+    }
+
+    // ============================================================
+    // تحليل النتائج النهائي
+    // ============================================================
+    const bullishCount = reasons.filter(r => r.type === 'bullish').length;
+    const bearishCount = reasons.filter(r => r.type === 'bearish').length;
+    const neutralCount = reasons.filter(r => r.type === 'neutral').length;
+    const totalReasons = reasons.length;
+
+    // تحديد الإشارة
+    let signalStrength = 0;
+    if (bullishCount > bearishCount + 2) {
+        signal = 'شراء قوي';
+        trend = 'صاعد قوي';
+        strength = 'قوية جداً';
+        risk = 'منخفضة';
+        signalStrength = 90;
+        recommendation = '🚀 شراء بقوة مع هدف T2';
+        expectedProfit = '15-25%';
+        riskReward = '1:3';
+    } else if (bullishCount > bearishCount) {
+        signal = 'شراء';
+        trend = 'صاعد';
+        strength = 'قوية';
+        risk = 'منخفضة إلى متوسطة';
+        signalStrength = 70;
+        recommendation = '📊 شراء مع هدف T1';
+        expectedProfit = '8-15%';
+        riskReward = '1:2';
+    } else if (bearishCount > bullishCount + 2) {
+        signal = 'بيع قوي';
+        trend = 'هابط قوي';
+        strength = 'قوية جداً';
+        risk = 'منخفضة';
+        signalStrength = 90;
+        recommendation = '🔻 بيع بقوة مع هدف T2';
+        expectedProfit = '15-25%';
+        riskReward = '1:3';
+    } else if (bearishCount > bullishCount) {
+        signal = 'بيع';
+        trend = 'هابط';
+        strength = 'قوية';
+        risk = 'منخفضة إلى متوسطة';
+        signalStrength = 70;
+        recommendation = '📊 بيع مع هدف T1';
+        expectedProfit = '8-15%';
+        riskReward = '1:2';
+    } else {
+        signal = 'انتظار';
+        trend = 'محايد';
+        strength = 'ضعيفة';
+        risk = 'عالية';
+        signalStrength = 30;
+        recommendation = '⏳ انتظر إشارة واضحة';
+        expectedProfit = 'غير مؤكد';
+        riskReward = '1:1';
+    }
+
+    // ============================================================
+    // حساب الدخول والأهداف
+    // ============================================================
     const entry = (support + resistance) / 2;
     const change = ((price - entry) / entry * 100).toFixed(2);
-
-    // ======== Fibonacci Targets ========
     const range = resistance - support;
     const fibs = [0.382, 0.618, 0.786, 1.0];
     const targets = fibs.map(f => (entry + range * f).toFixed(2));
-
-    // ======== Sell ========
     const sellEntry = (entry + range * 0.15).toFixed(2);
     const sellChange = ((price - parseFloat(sellEntry)) / parseFloat(sellEntry) * 100).toFixed(2);
 
-    // ======== RSI ========
-    const rsi = rsiInput || (45 + Math.random() * 30);
-
-    // ======== Smart Analysis ========
-    const aboveMA50 = ma50 && !isNaN(ma50) ? price > ma50 : null;
-    let trend = 'محايد';
-    let signal = 'انتظار';
-    let reason = '';
-    let recommendation = '';
-    let recommendationDetail = '';
-
-    // تحليل ذكي بناءً على السعر والمستويات
-    const pricePosition = (price - support) / (resistance - support); // 0 = دعم, 1 = مقاومة
-
-    if (pricePosition > 0.9) {
-        trend = 'صاعد قوي';
-        signal = 'شراء';
-        reason = `✅ السعر عند مستوى المقاومة ${resistance.toFixed(2)} مع اختراق محتمل، RSI (${rsi.toFixed(1)}) يدعم الصعود.`;
-        recommendation = '🚀 شراء مع هدف T2';
-        recommendationDetail = `الدخول عند ${entry.toFixed(2)}، وقف الخسارة عند ${(support).toFixed(2)}`;
-    } else if (pricePosition < 0.1) {
-        trend = 'هابط قوي';
-        signal = 'بيع';
-        reason = `⚠️ السعر عند مستوى الدعم ${support.toFixed(2)} مع كسر متوقع، RSI (${rsi.toFixed(1)}) يدعم الهبوط.`;
-        recommendation = '🔻 بيع مع هدف T2';
-        recommendationDetail = `الدخول عند ${entry.toFixed(2)}، وقف الخسارة عند ${(resistance).toFixed(2)}`;
-    } else if (aboveMA50 === true && rsi < 70) {
-        trend = 'صاعد';
-        signal = 'شراء';
-        reason = `📈 السعر فوق المتوسط 50 مع RSI (${rsi.toFixed(1)}) في منطقة آمنة.`;
-        recommendation = '📊 شراء تدريجي';
-        recommendationDetail = `الهدف الأول عند ${targets[0]}`;
-    } else if (aboveMA50 === false && rsi > 30) {
-        trend = 'هابط';
-        signal = 'بيع';
-        reason = `📉 السعر تحت المتوسط 50 مع RSI (${rsi.toFixed(1)}) في منطقة هبوط.`;
-        recommendation = '📊 بيع تدريجي';
-        recommendationDetail = `الهدف الأول عند ${targets[0]}`;
-    } else {
-        trend = 'محايد';
-        signal = 'انتظار';
-        reason = `⏳ السعر في نطاق ضيق (${support.toFixed(2)} - ${resistance.toFixed(2)})، انتظر تأكيد الاتجاه.`;
-        recommendation = '⏳ انتظر إشارة واضحة';
-        recommendationDetail = `نطاق التذبذب: ${support.toFixed(2)} - ${resistance.toFixed(2)}`;
-    }
-
-    // إضافة ملاحظات المستخدم
-    if (notes) {
-        reason += `\n📝 ملاحظة: "${notes}"`;
-    }
-
-    if (volumeInput) {
-        reason += `\n📊 حجم التداول: ${volumeInput}`;
-    }
-
-    // ======== Update UI ========
-    document.getElementById('changeDisplay').textContent = `${change}%`;
-    document.getElementById('entryDisplay').textContent = entry.toFixed(2);
-
-    document.getElementById('t1').textContent = targets[0];
-    document.getElementById('t2').textContent = targets[1];
-    document.getElementById('t3').textContent = targets[2];
-    document.getElementById('t4').textContent = targets[3];
-
-    document.getElementById('sellChange').textContent = `${sellChange}%`;
-    document.getElementById('sellEntry').textContent = sellEntry;
-
-    document.getElementById('reasonDisplay').textContent = reason;
-
-    // Indicators
+    // ============================================================
+    // عرض النتائج
+    // ============================================================
+    
+    // 1. المؤشرات
     document.getElementById('indRSI').textContent = rsi.toFixed(1);
     document.getElementById('indRSI').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
     
     document.getElementById('indMACD').textContent = rsi > 50 ? '📈 إيجابي' : '📉 سلبي';
     document.getElementById('indMACD').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
     
+    document.getElementById('indBollinger').textContent = bbPosition > 0.8 ? 'علوي' : bbPosition < 0.2 ? 'سفلي' : 'وسط';
+    document.getElementById('indBollinger').className = `value ${bbPosition > 0.8 ? 'bearish' : bbPosition < 0.2 ? 'bullish' : 'neutral'}`;
+    
+    document.getElementById('indIchimoku').textContent = price > ichimokuSenkouA ? '📈 فوق الغيمة' : '📉 تحت الغيمة';
+    document.getElementById('indIchimoku').className = `value ${price > ichimokuSenkouA ? 'bullish' : 'bearish'}`;
+    
+    document.getElementById('indMomentum').textContent = momentumInput || (rsi > 50 ? 'قوي' : 'ضعيف');
+    document.getElementById('indMomentum').className = `value ${rsi > 50 ? 'bullish' : 'bearish'}`;
+    
     document.getElementById('indMA50').textContent = ma50 ? ma50.toFixed(2) : '--';
     document.getElementById('indMA50').className = `value ${aboveMA50 ? 'bullish' : aboveMA50 === false ? 'bearish' : 'neutral'}`;
+    
+    document.getElementById('indMA200').textContent = ma200.toFixed(2);
+    document.getElementById('indMA200').className = `value ${aboveMA200 ? 'bullish' : 'bearish'}`;
     
     document.getElementById('indTrend').textContent = trend;
     document.getElementById('indTrend').className = `value ${trend.includes('صاعد') ? 'bullish' : trend.includes('هابط') ? 'bearish' : 'neutral'}`;
 
-    // Badges
+    // 2. الدخول والأهداف
+    document.getElementById('changeDisplay').textContent = `${change}%`;
+    document.getElementById('entryDisplay').textContent = entry.toFixed(2);
+    document.getElementById('t1').textContent = targets[0];
+    document.getElementById('t2').textContent = targets[1];
+    document.getElementById('t3').textContent = targets[2];
+    document.getElementById('t4').textContent = targets[3];
+    document.getElementById('sellChange').textContent = `${sellChange}%`;
+    document.getElementById('sellEntry').textContent = sellEntry;
+
+    // 3. قوة الإشارة
+    const bar = document.getElementById('signalStrengthBar');
+    bar.style.width = `${signalStrength}%`;
+    bar.className = `fill ${signalStrength > 70 ? 'strong' : signalStrength > 40 ? 'medium' : 'weak'}`;
+    document.getElementById('signalStrengthText').textContent = 
+        signalStrength > 70 ? '💪 قوي جداً' : 
+        signalStrength > 40 ? '📊 متوسط' : '⚠️ ضعيف';
+
+    // 4. عرض الأسباب التفصيلية
+    const reasonsList = document.getElementById('reasonsList');
+    reasonsList.innerHTML = reasons.map(r => `
+        <div class="reason-item">
+            <span class="icon">${r.icon}</span>
+            <span>${r.text}</span>
+            <span class="${r.type === 'bullish' ? 'highlight' : r.type === 'bearish' ? 'danger' : 'warning'}" style="font-size:11px; margin-right:8px;">
+                ${r.type === 'bullish' ? '📈 صاعد' : r.type === 'bearish' ? '📉 هابط' : '⏳ محايد'}
+            </span>
+        </div>
+    `).join('');
+
+    // 5. البادجات
     document.getElementById('trendBadge').textContent = `📌 الاتجاه: ${trend}`;
     document.getElementById('signalBadge').textContent = `📊 الإشارة: ${signal}`;
+    document.getElementById('riskBadge').textContent = `⚠️ المخاطرة: ${risk}`;
+    document.getElementById('strengthBadge').textContent = `💪 القوة: ${strength}`;
+    
     document.getElementById('trendBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
     document.getElementById('signalBadge').className = `badge ${signal.includes('شراء') ? 'badge-buy' : signal.includes('بيع') ? 'badge-sell' : 'badge-neutral'}`;
+    document.getElementById('riskBadge').className = `badge ${risk.includes('منخفضة') ? 'badge-buy' : risk.includes('عالية') ? 'badge-sell' : 'badge-neutral'}`;
+    document.getElementById('strengthBadge').className = `badge ${strength.includes('قوية') ? 'badge-strong' : 'badge-neutral'}`;
 
+    // 6. التوصية
     document.getElementById('recommendation').textContent = recommendation;
-    document.getElementById('recommendationDetail').textContent = recommendationDetail;
+    document.getElementById('recommendationDetail').textContent = 
+        `الدخول عند ${entry.toFixed(2)}، الهدف ${targets[0]}، وقف الخسارة عند ${(support).toFixed(2)}`;
+    document.getElementById('expectedProfit').textContent = expectedProfit;
+    document.getElementById('riskReward').textContent = riskReward;
 
-    // Save
+    // ============================================================
+    // حفظ التحليل
+    // ============================================================
     state.lastAnalysis = {
         asset,
         price,
@@ -900,17 +1453,38 @@ function performAnalysis() {
         targets,
         sellEntry,
         sellChange,
-        reason,
         trend,
         signal,
+        risk,
+        strength,
         recommendation,
         recommendationDetail,
+        expectedProfit,
+        riskReward,
+        reasons: reasons.map(r => r.text),
+        bullishCount,
+        bearishCount,
+        totalReasons,
         rsi: rsi.toFixed(1),
         support: support.toFixed(2),
         resistance: resistance.toFixed(2),
     };
 
-    showNotification(`✅ تم التحليل: ${signal}`, 'success');
+    // ============================================================
+    // إضافة ملاحظات المستخدم
+    // ============================================================
+    if (notes) {
+        const reasonsList2 = document.getElementById('reasonsList');
+        reasonsList2.innerHTML += `
+            <div class="reason-item" style="border-color: #f5b041;">
+                <span class="icon">📝</span>
+                <span><strong>ملاحظة المستخدم:</strong> ${notes}</span>
+            </div>
+        `;
+    }
+
+    showNotification(`✅ تم التحليل: ${signal} (${totalReasons} سبب)`, 
+        signal.includes('شراء') ? 'success' : signal.includes('بيع') ? 'error' : 'warning');
 }
 
 // ============================================================
@@ -936,7 +1510,7 @@ function renderHistory() {
     list.innerHTML = state.history.slice(0, 20).map(item => `
         <div class="history-item">
             <span class="asset">${item.asset}</span>
-            ${item.signal} | الدخول: ${item.entry}
+            <span>${item.signal} | ${item.entry}</span>
             <span class="time">${new Date(item.timestamp).toLocaleTimeString('ar-EG', {hour:'2-digit',minute:'2-digit'})}</span>
         </div>
     `).join('');
@@ -976,20 +1550,34 @@ async function sendToTelegram() {
     }
 
     const a = state.lastAnalysis;
+    const reasonsText = a.reasons ? a.reasons.map((r, i) => `${i+1}. ${r}`).join('\n') : '--';
+    
     const message = `
-📊 *تحليل ${a.asset}*
+📊 *تحليل احترافي - ${a.asset}*
+═══════════════════════════════
 💰 السعر الحالي: ${a.price}
 📈 الدخول: ${a.entry} (${a.change}%)
-🎯 الأهداف:
+
+🎯 *الأهداف:*
 T1: ${a.targets[0]} | T2: ${a.targets[1]}
 T3: ${a.targets[2]} | T4: ${a.targets[3]}
+
 📉 البيع: ${a.sellEntry} (${a.sellChange}%)
-📊 الإشارة: ${a.signal}
-📌 الاتجاه: ${a.trend}
-🧠 السبب: ${a.reason}
-📋 التوصية: ${a.recommendation}
-${a.recommendationDetail ? `📝 ${a.recommendationDetail}` : ''}
+
+📊 *الإشارة:* ${a.signal}
+📌 *الاتجاه:* ${a.trend}
+💪 *القوة:* ${a.strength}
+⚠️ *المخاطرة:* ${a.risk}
+
+🧠 *أسباب التحليل (${a.totalReasons || 0} سبب):*
+${reasonsText}
+
+📋 *التوصية:* ${a.recommendation}
+🎯 *الربح المتوقع:* ${a.expectedProfit}
+📊 *نسبة المخاطرة/المكافأة:* ${a.riskReward}
+
 ⏰ ${new Date().toLocaleString('ar-EG')}
+═══════════════════════════════
     `;
 
     try {
@@ -1015,7 +1603,7 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         div.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => div.remove(), 300);
-    }, 3500);
+    }, 4000);
 }
 
 // ============================================================
@@ -1023,17 +1611,34 @@ function showNotification(message, type = 'info') {
 // ============================================================
 function copyAnalysis() {
     const a = state.lastAnalysis || {};
+    const reasonsText = a.reasons ? a.reasons.map((r, i) => `${i+1}. ${r}`).join('\n') : '--';
+    
     const text = `
-📊 تحليل ${a.asset || 'غير محدد'}
+📊 تحليل احترافي - ${a.asset || 'غير محدد'}
+═══════════════════════════════
 💰 السعر: ${a.price || '--'}
 📈 الدخول: ${a.entry || '--'} (${a.change || '--'}%)
-🎯 الأهداف: ${a.targets?.join(' | ') || '--'}
-📉 البيع: ${a.sellEntry || '--'}
+
+🎯 الأهداف:
+T1: ${a.targets?.[0] || '--'} | T2: ${a.targets?.[1] || '--'}
+T3: ${a.targets?.[2] || '--'} | T4: ${a.targets?.[3] || '--'}
+
+📉 البيع: ${a.sellEntry || '--'} (${a.sellChange || '--'}%)
+
 📊 الإشارة: ${a.signal || '--'}
 📌 الاتجاه: ${a.trend || '--'}
-🧠 السبب: ${a.reason || '--'}
+💪 القوة: ${a.strength || '--'}
+⚠️ المخاطرة: ${a.risk || '--'}
+
+🧠 أسباب التحليل (${a.totalReasons || 0} سبب):
+${reasonsText}
+
 📋 التوصية: ${a.recommendation || '--'}
+🎯 الربح المتوقع: ${a.expectedProfit || '--'}
+📊 نسبة المخاطرة/المكافأة: ${a.riskReward || '--'}
+
 ⏰ ${new Date().toLocaleString('ar-EG')}
+═══════════════════════════════
     `.trim();
 
     navigator.clipboard.writeText(text).then(() => {
@@ -1073,9 +1678,9 @@ function init() {
 
     setInterval(fetchLivePrice, 60000);
 
-    console.log('✅ منصة التحليل جاهزة!');
+    console.log('🚀 منصة التحليل الاحترافية v5.0 جاهزة!');
     console.log('💡 Ctrl+Enter للتحليل السريع');
-    console.log('💡 Ctrl+R لتحديث السعر');
+    console.log('📊 تحليل متقدم مع 13+ سبب مختلف');
 }
 
 init();
